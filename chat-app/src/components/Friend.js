@@ -10,13 +10,14 @@ class Friend extends React.Component {
 
   render() {
     console.log(this.props)
+
     return(
       <div>
         <Dropdown item text={this.props.friend.username} name='friend'>
           <Dropdown.Menu>
             {this.props.chats.map((chat) => {
-              return <Dropdown.Item>
-                <Chat />
+              return <Dropdown.Item onClick={()=>this.props.updateActiveChat(chat.chat)} data-id={chat.chat.id}>
+              {chat.chat.title}
               </Dropdown.Item>
             })}
           </Dropdown.Menu>

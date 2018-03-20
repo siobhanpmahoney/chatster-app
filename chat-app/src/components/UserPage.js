@@ -29,9 +29,10 @@ class UserPage extends React.Component {
   //fetching chat archive from backend
 
   updateActiveChat = (selectChat) => {
-
     this.fetchActiveChatInfo(selectChat)
+    
   }
+
 
   fetchActiveChatInfo = (chat) => {
     fetch(`http://localhost:3000/api/v1/chats/${chat.id}`)
@@ -112,7 +113,7 @@ class UserPage extends React.Component {
           <Grid.Column width={4} textAlign={"left"}>
             {!!this.props.friends &&
 
-              <FriendsContainer user={this.props.user} chats={this.props.chats} friends={this.props.friends} />
+              <FriendsContainer user={this.props.user} chats={this.props.chats} friends={this.props.friends} addResponseToState={this.addResponseToState} handleCloseChat={this.handleCloseChat} handleNewMessageSubmit={this.handleNewMessageSubmit} fetchActiveChatInfo={this.fetchActiveChatInfo} updateActiveChat={this.updateActiveChat} activeChatMessages={this.state.activeChatMessages} activeChat={this.state.activeChat} />
 
             }
           </Grid.Column>

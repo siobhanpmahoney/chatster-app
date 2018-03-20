@@ -15,12 +15,11 @@ const Chat = (props) => {
 
       <div className="chat">
 
-        <List.Content style={{fontFamily:"Avenir", alignment:"left"}}>
+
           <h4 onClick={()=>props.onClick(props.chat)} data-id={props.key}>
           <List.Header>{props.title}</List.Header>
       </h4>
-    {props.chatUser["username"]}
-        </List.Content>
+    
     </div>
 
     </div>

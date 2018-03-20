@@ -17,6 +17,7 @@ class User < ApplicationRecord
     end
   end
 
+
   def chat_attributes=(chat_attributes)
     chat_attributes.values.each do |chat|
       chat = Chat.find_or_create_by(chat)
@@ -38,5 +39,12 @@ class User < ApplicationRecord
   def user_chats
     self.chats
   end
+
+
+    def chats_with_users
+      self.user_chats.map do |chat|
+        puts chat.chat_users
+      end
+    end
 
 end

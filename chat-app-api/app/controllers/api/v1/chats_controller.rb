@@ -10,8 +10,11 @@ class Api::V1::ChatsController < ApplicationController
   end
 
   def show
-    messages = Chat.find(params[:id]).message_with_usernames
-    render json: {messages: messages}
+    @chat = Chat.find(params[:id])
+    messages = @chat.message_with_usernames
+    users = @chat.chat_users
+    chat_info = {chat: @chat, messages: messages, users: users}
+    render json: chat_info
   end
 
   def edit

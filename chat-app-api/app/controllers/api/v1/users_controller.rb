@@ -9,6 +9,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.find_or_create_by(username: params[:user][:username])
     friends = user.friends
     chats = user.chats
+
     user_info = {user: user, friends: friends, chats: chats}
 
     render json: user_info
@@ -17,8 +18,16 @@ class Api::V1::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @friends = @user.user_friends
-    @chats = @user.user_chats
-    
+    @chats = @user.chats.map do |chat|
+      messages = chat.message_with_usernames
+      users = chat.chat_users
+
+      {chat: chat, messages: messages, users: users}
+    end
+
+
+
+
     user_info = {user: @user, friends: @friends, chats: @chats}
     render json: user_info
   end

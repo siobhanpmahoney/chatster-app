@@ -24,4 +24,15 @@ class Chat < ApplicationRecord
     end
   end
 
+  def chat_users
+    users = []
+    self.messages.each do |msg|
+      u = User.find_by(username: msg.username)
+      if !users.any? {|usr| usr.id == u.id}
+        users << u
+      end
+    end
+    return users
+  end
+
 end

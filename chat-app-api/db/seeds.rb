@@ -6,19 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-8.times do
+3.times do
   name = Faker::TwinPeaks.character.split(" ").join("_").downcase
   user = User.find_or_create_by(username: name)
   user.update(password: user.username)
 end
 
-8.times do
+5.times do
   name = Faker::HarryPotter.character.split(" ").join("_").downcase
   User.find_or_create_by(username: name)
 end
 
+5.times do
+  name = Faker::SiliconValley.character.scan(/\w+/).join('_').downcase
+  User.find_or_create_by(username: name)
+end
 
-3.times do
+5.times do
+  name = Faker::Seinfeld.character.scan(/\w+/).join('_').downcase
+  User.find_or_create_by(username: name)
+end
+
+
+2.times do
   User.all.each do |user|
     friend = User.all.sample
     if friend.id != user.id
@@ -28,23 +38,50 @@ end
   end
 end
 
+
 User.all.each do |user|
   user.friends.each do |friend|
-    if !Chat.find_by(title: Faker::File.file_name)
-      chat = Chat.create(title: Faker::Book.title)
+    chat_title = Faker::Address.unique.city.capitalize + " " + Faker::Hipster.word.capitalize
+    if !Chat.find_by(title: chat_title)
+      chat = Chat.create(title: chat_title)
       UserChat.create(user_id: user.id, chat_id: chat.id)
       UserChat.create(user_id: friend.id, chat_id: chat.id)
     end
   end
 end
 
-10.times do
+
+3.times do
   Chat.all.each do |chat|
     chat.users.each do |user|
       Message.create(content: Faker::HarryPotter.quote, chat_id: chat.id, user_id: user.id)
     end
   end
 end
+
+
+3.times do
+  Chat.all.each do |chat|
+    chat.users.each do |user|
+      Message.create(content: Faker::TwinPeaks.quote, chat_id: chat.id, user_id: user.id)
+    end
+  end
+end
+
+
+
+3.times do
+  Chat.all.each do |chat|
+    chat.users.each do |user|
+      Message.create(content: Faker::SiliconValley.quote, chat_id: chat.id, user_id: user.id)
+    end
+  end
+end
+
+
+
+
+
 
 
 

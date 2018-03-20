@@ -1,5 +1,7 @@
 import React from "react";
 import FriendList from './FriendList';
+import { Button, Menu } from 'semantic-ui-react'
+
 
 class FriendsContainer extends React.Component {
 
@@ -7,8 +9,10 @@ class FriendsContainer extends React.Component {
     return (
 
       <div className="friendsContainer">
-        FriendContainer
-        <FriendList friends={this.props.friends}/>
+        <Menu vertical>
+
+        <FriendList friends={this.props.friends} chats={this.props.chats}/>
+        </Menu>
       </div>
     )
   }

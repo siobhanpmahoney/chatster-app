@@ -12,6 +12,7 @@ const user = (state = {user: null, friends: [], chats: [] }, action) => {
         chats: action.chats,
       }
     );
+    console.log(state.chats)
     return state;
 
     default:

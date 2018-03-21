@@ -1,6 +1,6 @@
 import React from 'react'
 import Friend from './Friend'
-import { Sidebar, Segment, Button, Menu, Icon } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Icon, Accordian } from 'semantic-ui-react'
 
 
 

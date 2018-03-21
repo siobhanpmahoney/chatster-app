@@ -9,7 +9,7 @@ class FriendsContainer extends React.Component {
     return (
 
       <div className="friendsContainer">
-        <Menu vertical>
+        <Menu fluid vertical tabular>
 
         <FriendList friends={this.props.friends} chats={this.props.chats} user={this.props.user} addResponseToState={this.props.addResponseToState} handleCloseChat={this.props.handleCloseChat} handleNewMessageSubmit={this.props.handleNewMessageSubmit} fetchActiveChatInfo={this.props.fetchActiveChatInfo} updateActiveChat={this.props.updateActiveChat} activeChatMessages={this.props.activeChatMessages} activeChat={this.props.activeChat}/>
         </Menu>

@@ -9,10 +9,10 @@ class Friend extends React.Component {
   }
 
   render() {
-  
+
 
     return(
-      <div>
+      <div style={{fontFamily:"Nunito Sans"}}>
         <Dropdown item text={this.props.friend.username} name='friend'>
           <Dropdown.Menu>
             {this.props.chats.map((chat) => {

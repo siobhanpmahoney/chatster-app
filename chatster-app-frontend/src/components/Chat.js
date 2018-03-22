@@ -1,6 +1,6 @@
 import React from 'react'
 import ActiveChat from './ActiveChat.js'
-import { List } from 'semantic-ui-react'
+import { List, Menu } from 'semantic-ui-react'
 
 
 
@@ -11,16 +11,18 @@ const Chat = (props) => {
   }
   return (
 
-    <div>
-
-      <div className="chat">
+    <div style={{fontFamily:"Nunito Sans"}}>
 
 
-          <h4 onClick={()=>props.onClick(props.chat)} data-id={props.key}>
-          <List.Header>{props.title}</List.Header>
-      </h4>
-    
-    </div>
+
+
+          <Menu.Item size='large' onClick={()=>props.onClick(props.chat)} data-id={props.key} style={{fontFamily:"Nunito Sans"}}>
+            <b>{props.title}</b><br />
+            {props.chatUser.username}
+          </Menu.Item>
+
+
+
 
     </div>
   )

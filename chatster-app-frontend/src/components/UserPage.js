@@ -110,8 +110,8 @@ class UserPage extends React.Component {
 
         <Grid>
           <Grid.Row>
-            <Grid.Column width={16}>
-              <Header size='huge'>First Header</Header>
+            <Grid.Column width={18}>
+
             </Grid.Column>
           </Grid.Row>
           <Grid.Column width={4} textAlign={"left"}>

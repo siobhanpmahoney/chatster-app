@@ -43,7 +43,7 @@ class Api::V1::ChatsController < ApplicationController
       :title,
       user_ids: [],
       users_attributes: [
-        :username, :password, :password_confirmation,
+        :username, :password, :password_confirmation, :avatar
       ],
       message_ids: [],
       messages_attributes: [

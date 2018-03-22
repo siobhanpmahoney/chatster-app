@@ -55,7 +55,7 @@ class Api::V1::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :username, :password, :password_confirmation,
+      :username, :password, :password_confirmation, :avatar,
       chat_ids: [],
       chats_attributes: [
         :title

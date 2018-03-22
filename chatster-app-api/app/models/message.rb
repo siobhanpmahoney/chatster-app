@@ -5,4 +5,8 @@ class Message < ApplicationRecord
   def username
     self.user.username
   end
+
+  def avatar
+    self.user.avatar
+  end
 end

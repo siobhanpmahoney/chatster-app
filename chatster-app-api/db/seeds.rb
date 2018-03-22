@@ -6,26 +6,44 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-3.times do
-  name = Faker::TwinPeaks.character.split(" ").join("_").downcase
-  user = User.find_or_create_by(username: name)
-  user.update(password: user.username)
+avatars = [
+  "https://react.semantic-ui.com/assets/images/avatar/small/steve.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/ade.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/chris.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/christian.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/daniel.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/elliot.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/helen.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/jenny.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/joe.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/large/kristy.png",
+  "https://react.semantic-ui.com/assets/images/avatar/small/justen.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/laura.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/lena.png",
+  "https://react.semantic-ui.com/assets/images/avatar/small/lindsay.png",
+  "https://react.semantic-ui.com/assets/images/avatar/small/matthew.png",
+  "https://react.semantic-ui.com/assets/images/avatar/small/mark.png",
+  "https://react.semantic-ui.com/assets/images/avatar/small/molly.png",
+  "https://react.semantic-ui.com/assets/images/avatar/small/nan.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/large/patrick.png",
+  "https://react.semantic-ui.com/assets/images/avatar/small/rachel.png",
+  "https://react.semantic-ui.com/assets/images/avatar/small/tom.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/veronika.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/stevie.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/steve.jpg",
+  "https://react.semantic-ui.com/assets/images/avatar/small/zoe.jpg"
+]
+
+
+
+12.times do
+  name = Faker::Internet.user_name.scan(/\w+/).join('.').downcase
+  if !User.find_by(username: name)
+    user = User.create(username: name, password:name, password_confirmation:name)
+    user.update(avatar: avatars[user.id])
+  end
 end
 
-5.times do
-  name = Faker::HarryPotter.character.split(" ").join("_").downcase
-  User.find_or_create_by(username: name)
-end
-
-5.times do
-  name = Faker::SiliconValley.character.scan(/\w+/).join('_').downcase
-  User.find_or_create_by(username: name)
-end
-
-5.times do
-  name = Faker::Seinfeld.character.scan(/\w+/).join('_').downcase
-  User.find_or_create_by(username: name)
-end
 
 
 2.times do
@@ -41,7 +59,7 @@ end
 
 User.all.each do |user|
   user.friends.each do |friend|
-    chat_title = Faker::Address.unique.city.capitalize + " " + Faker::Hipster.word.capitalize
+    chat_title = Faker::Book.title
     if !Chat.find_by(title: chat_title)
       chat = Chat.create(title: chat_title)
       UserChat.create(user_id: user.id, chat_id: chat.id)
@@ -73,7 +91,7 @@ end
 3.times do
   Chat.all.each do |chat|
     chat.users.each do |user|
-      Message.create(content: Faker::SiliconValley.quote, chat_id: chat.id, user_id: user.id)
+      Message.create(content: Faker::Movie.quote, chat_id: chat.id, user_id: user.id)
     end
   end
 end

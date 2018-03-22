@@ -8,7 +8,7 @@ import { Sidebar, Segment, Button, Menu, Icon, Accordian } from 'semantic-ui-rea
 const FriendList = (props) => {
 
   return(
-    <div className="friendList">
+    <div className="friendList" style={{fontFamily:"Nunito Sans"}}>
 
 
         {props.friends.map((b) => {

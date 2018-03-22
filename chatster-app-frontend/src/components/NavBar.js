@@ -28,12 +28,12 @@ class NavBar extends React.Component {
     if (!!this.props.user) {
       return (
 
-      <span style={{backgroundColor:"white", padding:"1em", margin:"1em"}}>
+      <span style={{padding:"1em", margin:"1em"}}>
 
         <span style={{float:"right", style:"inline"}}>
-          <NavLink to="/" exact style={link} activeStyle={{backgroundColor:'#7FE6E1', color:"white", textDecoration:"none"}}>Profile</NavLink>
+          <NavLink to="/" exact style={link} activeStyle={{ color:"white", textDecoration:"none"}}>Profile</NavLink>
 
-          <NavLink onClick={this.props.logOutUser} to="/logout" exact style={link} activeStyle={{backgroundColor:'#7FE6E1', color:"white", textDecoration:"none"}}> Log Out </NavLink>
+          <NavLink onClick={this.props.logOutUser} to="/logout" exact style={link} activeStyle={{color:"white", textDecoration:"none"}}> Log Out </NavLink>
         </span>
       </span>
   )
@@ -55,8 +55,8 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div className="navbar" style={{backgroundColor:"white", padding:"1em"}}>
-        <span style={{fontSize:"36px", fontWeight:"800", fontFamily:"Avenir", style:"inline", marginTop:"0.75em", padding:"0.75em", alignment:"left"}}>ChatApp</span>
+      <div className="navbar" style={{padding:"1em", height:"100px"}}>
+        <span style={{fontSize:"36px", fontWeight:"800", fontFamily:"Avenir", style:"inline", marginTop:"0.75em", padding:"1em", alignment:"left"}}>ChatApp</span>
         {this.renderHTML()}
       </div>)
     }

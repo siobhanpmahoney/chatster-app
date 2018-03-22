@@ -17,6 +17,15 @@
   font-size: large;
 }
 
+body {
+  font-family: "Nunito Sans";
+  color: #253858;
+}
+
+.msgSegment {
+  background-color:#B2D4FF;
+}
+
 
 
 
@@ -56,14 +65,14 @@
 } */
 
 .messageDisplay {
-  border: solid 1px;
+
   border-radius: 10px;
   /* padding: 0.35em 0.35em 0.35em 0;
   margin: 0.35em; */
   /* font: 14px "Lato"; */
   line-height: 1.5em;
-  background: #536ADE;
   color: white;
+  font-family: "Nunito Sans"
 
 }
 
@@ -71,6 +80,7 @@
   border-radius: 3px;
   /* float: inherit; */
   box-shadow: 0 14px 14px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10);
+  font-family: "Nunito Sans";
 
   /* height: auto; */
 }
@@ -84,33 +94,28 @@
 
 }
 
+.navbar {
+  background: linear-gradient(#0052CC, #549eff);
+  color: white;
+}
+
 .chat {
   /* border: 3px #403F63 solid;
   box-shadow: 0 2px 2px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.12); */
-  font-family: "Avenir";
+  font: "Nunito Sans" 15px;
   /* border-radius: 4px;
   max-width: 250px;
   flex-direction:right; */
 }
 
-/*
+
 .chatList {
-  border-radius: 1px;
-  display: flex;
-  align-items: right;
-  float:right;
-  flex-direction: column-reverse;
-  justify-content: right;
-  max-height: 100px;
-  min-height: 50px;
-  max-width: 100px;
-  margin: 0.25rem;
-  width: 150px;
-  padding: 0.5em;
+  font-family: "Nunito Sans";
 }
 
 .chatList {
-  border: groove;
+  font-size: 15px;
+  /* border: groove;
   display:flex;
   flex-direction: column;
   width: 25%;
@@ -118,10 +123,10 @@
   background-color: white;
   height: 75px;
   margin: 12px;
-  padding: 12px;
+  padding: 12px; */
 }
 
-.friendItem {
+/* .friendItem {
   border: solid 1px;
 border-radius: 1px;
 display: flex;
@@ -135,17 +140,17 @@ margin: 0.25rem;
 position: align;
 width: 150px;
 padding: 0.5em;
-}
+} */
 
-.activeChatWindowContainer {
+/* .activeChatWindowContainer {
   display: flex;
   align: right;
   padding: 12px;
   width: 50%;
   min-height: 200px;
-}
+} */
 
-.messageHistory {
+/* .messageHistory {
   border-radius: 3px;
   display: flex;
   justify-content: left;
@@ -155,24 +160,24 @@ padding: 0.5em;
   position: align;
   width: inherit;
   overflow: scroll;
-}
+} */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Nunito Sans"
 }
 
- .friendContainer {
+ /* .friendContainer {
   display:flex;
   flex-direction: column;
   width: 20%;
   float: left;
   margin: 0.25em;
   padding: 0.25em;
-}
+} */
 
 
 
-.messageHistory {
+/* .messageHistory {
 
   min-margin: 0.5rem;
 
@@ -183,8 +188,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Source Sans Pro";
   font-size: 14px;
 
-}
+} */
 
-.chat {
+/* .chat {
 
 } */

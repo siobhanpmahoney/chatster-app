@@ -11,11 +11,11 @@ const ChatList = (props) => {
 
   return(
     <div className="chatList">
-      <Menu fluid vertical tabular='right'>
+      <Menu fluid vertical tabular='right' align="left" large>
 
         {props.chats.map((chat) => {
 
-          return <div style={{fontFamily:"Nunito Sans", overflow:"auto"}}>
+          return <div style={{fontFamily:"Nunito Sans", overflow:"auto", maxHeight: "300px"}}>
 
             <Chat chat={chat.chat}
               chatUser={chat.users.find((user) => {

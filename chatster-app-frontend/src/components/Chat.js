@@ -16,7 +16,7 @@ const Chat = (props) => {
 
 
 
-          <Menu.Item size='large' onClick={()=>props.onClick(props.chat)} data-id={props.key} style={{fontFamily:"Nunito Sans"}}>
+          <Menu.Item size='large' onClick={()=>props.onClick(props.chat)} data-id={props.key} style={{fontFamily:"Nunito Sans", fontSize:"1em"}}>
             <b>{props.title}</b><br />
             {props.chatUser.username}
           </Menu.Item>

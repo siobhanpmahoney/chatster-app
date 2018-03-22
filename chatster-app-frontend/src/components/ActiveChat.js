@@ -75,34 +75,39 @@ class ActiveChat extends React.Component {
     }
     else {
       display = (<div className="activeChatWindowContainer">
-      <span className="topBar">
-        <Icon circular onClick={this.closeChat} name="close" style={{padding:"0.25em", margin:"0.25em"}} />
-      </span>
-      <Sticky>
-        <Header as='h4' dividing style={{padding:"0.25em", margin:"0.25em", fontFamily:"Nunito Sans"}}>
-          {this.props.chat.title}
-        </Header>
-      </Sticky>
+      <div className="topBar">
+        <Sticky>
+            <Button size='tiny' floated="right" onClick={this.closeChat} style={{ color:"#718CA1", backgroundColor: "white", padding:"0.5em", marginBottom:"1em", marginLeft:"1em"}}><i class="material-icons">close</i></Button>
+          <Header dividing style={{padding:"0.25em", fontFamily:"Nunito Sans"}}>
+
+            {this.props.chat.title}
+          </Header>
+
+        </Sticky>
+      </div>
+
 
 
       <Comment.Group>
+        <div className="messageHistory">
         {this.props.messages.map((m) => {
-           return(<Comment key={m.id} className="messageDisplay" style={this.renderChat(m)}>
+          return(<Comment key={m.id} className="messageDisplay" >
 
 
-              <Comment.Avatar float attached="right" as='a' src={m.avatar} />
+             <Comment.Avatar float attached="right" as='a' src={m.avatar} />
 
 
-                     <Comment.Content>
-                       <Comment.Author as='a'>{m.username}</Comment.Author>
-                       <Comment.Text>{m.content}</Comment.Text>
-                     </Comment.Content>
+                    <Comment.Content>
+                      <Comment.Author as='a'>{m.username}</Comment.Author>
+                      <Comment.Text style={this.renderChat(m)}>{m.content}</Comment.Text>
+                    </Comment.Content>
 
 
 
 
-        </Comment>)
+       </Comment>)
         })}
+        </div>
         <Comment>
           <Comment.Content>
             <Form inline reply>
@@ -120,7 +125,7 @@ class ActiveChat extends React.Component {
     }
 
         return (
-          <div style={{fontFamily:"Nunito Sans", background:"white"}}>
+          <div style={{fontFamily:"Nunito Sans", background:"white", maxHeight:"300px"}}>
             {display}
           </div>
         )

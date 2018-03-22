@@ -22,6 +22,15 @@ body {
   color: #253858;
 }
 
+.topBar {
+  padding: 1em;
+  margin: 0.5em;
+}
+
+.activeChatComponent .friendsContainer {
+  font-family: "Nunito Sans"
+}
+
 
 
 .messageDisplay {
@@ -32,14 +41,14 @@ body {
   /* font: 14px "Lato"; */
   line-height: 1.5em;
   color: white;
-  font-family: "Nunito Sans"
+  font-family: "Nunito Sans";;
 
 }
 
  .activeChatWindowContainer {
   border-radius: 3px;
   /* float: inherit; */
-  box-shadow: 0 14px 14px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10);
+  /* box-shadow: 0 14px 14px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10); */
   font-family: "Nunito Sans";
 
 
@@ -47,8 +56,13 @@ body {
 
 
 
-.nothing-to-display {
-
+.messageHistory {
+  max-height: 300px;
+  overflow: auto;
+  font-family: "Nunito Sans";
+  margin: "1em";
+  font-size: "14px";
+  padding: "1em"
 }
 
 .navbar {
@@ -58,7 +72,8 @@ body {
 
 .chat {
 
-  font: "Nunito Sans" 15px;
+  font: "Nunito Sans" 14px;
+  margin: "1em";
 
 }
 

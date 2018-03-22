@@ -121,7 +121,7 @@ class UserPage extends React.Component {
 
             }
           </Grid.Column>
-          <Grid.Column width={3}>
+          <Grid.Column width={4}>
             {!!this.props.chats &&
 
 
@@ -138,8 +138,8 @@ class UserPage extends React.Component {
             }
           </Grid.Column>
 
-          <Grid.Column width={10} textAlign={"left"}>
-            <div style={{fontFamily:"Nunito Sans"}}>
+          <Grid.Column width={9} textAlign={"left"}>
+            <div className="activeChatComponent">
               <ActiveChatContainer user={this.props.user} user={this.props.user} chat={this.state.activeChat} messages={this.state.activeChatMessages}  handleNewMessageSubmit={this.handleNewMessageSubmit} updateChat={this.updateActiveChat} handleCloseChat={this.handleCloseChat}/>
             </div>
           </Grid.Column>

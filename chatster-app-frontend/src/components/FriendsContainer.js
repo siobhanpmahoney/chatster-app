@@ -8,7 +8,7 @@ class FriendsContainer extends React.Component {
   render() {
     return (
 
-      <div className="friendsContainer" style={{fontFamily:"Nunito Sans"}}>
+      <div className="friendsContainer">
         <Menu fluid vertical tabular="left">
           <Menu.Item header style={{fontFamily:"Nunito Sans"}} size='large'>Friends</Menu.Item>
 

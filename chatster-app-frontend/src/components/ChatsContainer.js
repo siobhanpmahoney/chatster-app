@@ -98,9 +98,7 @@ class ChatsContainer extends React.Component {
 
     return (
       <div className="chatsContainer">
-        <Grid>
 
-          <Grid.Column width={4} textAlign={"left"} >
             <Menu fluid vertical tabular='left' style={{size:"16px"}}>
               <Menu.Item header style={{fontFamily:"Nunito Sans"}}>Chats</Menu.Item>
 
@@ -109,16 +107,7 @@ class ChatsContainer extends React.Component {
               <ChatList chats={this.props.chats} user={this.props.user} onClick={this.props.updateActiveChat}  activeChatMessages={this.props.activeChatMessages} activeChatId={this.props.chatId} messageDraftListener={this.messageDraftListener} handleNewMessageSubmit={this.props.handleNewMessageSubmit} />
 
           </Menu>
-            </Grid.Column>
-
-        <Grid.Column width={10} textAlign={"left"}>
-          <div style={{fontFamily:"Nunito Sans"}}>
-            <ActiveChatContainer user={this.props.user} user={this.props.user} chat={this.props.activeChat} messages={this.props.activeChatMessages}  handleNewMessageSubmit={this.props.handleNewMessageSubmit} updateChat={this.props.updateActiveChat} handleCloseChat={this.props.handleCloseChat}/>
-          </div>
-        </Grid.Column>
-
-
-        </Grid>
+      
       </div>
     )
   }

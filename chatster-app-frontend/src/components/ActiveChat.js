@@ -28,10 +28,9 @@ class ActiveChat extends React.Component {
     let message = this.state.messageText
 
     this.props.handleNewMessageSubmit(event, chat, message)
-    console.log(event.target.parentElement.childNodes[0].childNodes[0].value)
-
-    event.target.parentElement.childNodes[0].childNodes[0].value = ""
-    console.log(event.target.parentElement.childNodes[0].childNodes[0].value)
+    this.setState({
+      messageText: ""
+    })
   }
 
   closeChat = (event) => {
@@ -77,7 +76,7 @@ class ActiveChat extends React.Component {
     else {
       display = (<div className="activeChatWindowContainer">
       <span className="topBar">
-        <Icon circular onClick={this.closeChat} name="close" style={{padding:"0.5em", margin:"0.5em"}} />
+        <Icon circular onClick={this.closeChat} name="close" style={{padding:"0.25em", margin:"0.25em"}} />
       </span>
       <Sticky>
         <Header as='h4' dividing style={{padding:"0.25em", margin:"0.25em", fontFamily:"Nunito Sans"}}>
@@ -108,7 +107,7 @@ class ActiveChat extends React.Component {
           <Comment.Content>
             <Form inline reply>
               <Sticky>
-                <Form.TextArea onChange={this.messageDraftListener} />
+                <Form.TextArea value={this.state.messageText} onChange={this.messageDraftListener} />
                 <Button onClick={this.messageSend} labelPosition='left' icon='send outline' primary />
               </Sticky>
             </Form>

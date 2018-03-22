@@ -110,24 +110,38 @@ class UserPage extends React.Component {
 
         <Grid>
           <Grid.Row>
-            <Grid.Column width={18}>
+            <Grid.Column width={16}>
 
             </Grid.Column>
           </Grid.Row>
-          <Grid.Column width={4} textAlign={"left"}>
+          <Grid.Column width={3} textAlign={"left"}>
             {!!this.props.friends &&
 
               <FriendsContainer user={this.props.user} chats={this.props.chats} friends={this.props.friends} addResponseToState={this.addResponseToState} handleCloseChat={this.handleCloseChat} handleNewMessageSubmit={this.handleNewMessageSubmit} fetchActiveChatInfo={this.fetchActiveChatInfo} updateActiveChat={this.updateActiveChat} activeChatMessages={this.state.activeChatMessages} activeChat={this.state.activeChat} />
 
             }
           </Grid.Column>
-          <Grid.Column width={12}>
+          <Grid.Column width={3}>
             {!!this.props.chats &&
 
 
-              <div><ChatsContainer user={this.props.user} chats={this.props.chats} friends={this.props.friends} addResponseToState={this.addResponseToState} handleCloseChat={this.handleCloseChat} handleNewMessageSubmit={this.handleNewMessageSubmit} fetchActiveChatInfo={this.fetchActiveChatInfo} updateActiveChat={this.updateActiveChat} activeChatMessages={this.state.activeChatMessages} activeChat={this.state.activeChat}/></div>
+              <div><ChatsContainer user={this.props.user}
+                chats={this.props.chats} friends={this.props.friends}
+                addResponseToState={this.addResponseToState}
+                handleCloseChat={this.handleCloseChat}
+                handleNewMessageSubmit={this.handleNewMessageSubmit}
+                fetchActiveChatInfo={this.fetchActiveChatInfo}
+                updateActiveChat={this.updateActiveChat}
+                activeChatMessages={this.state.activeChatMessages}
+                activeChat={this.state.activeChat}/></div>
 
             }
+          </Grid.Column>
+
+          <Grid.Column width={10} textAlign={"left"}>
+            <div style={{fontFamily:"Nunito Sans"}}>
+              <ActiveChatContainer user={this.props.user} user={this.props.user} chat={this.state.activeChat} messages={this.state.activeChatMessages}  handleNewMessageSubmit={this.handleNewMessageSubmit} updateChat={this.updateActiveChat} handleCloseChat={this.handleCloseChat}/>
+            </div>
           </Grid.Column>
         </Grid>
       </div>

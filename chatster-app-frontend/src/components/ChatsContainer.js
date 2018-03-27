@@ -1,7 +1,7 @@
 import React from "react";
 import ChatList from './ChatList'
 import ActiveChatContainer from './ActiveChatContainer'
-import { Grid, Menu, Input, Header} from 'semantic-ui-react'
+import { Grid, Menu, Input, Header, Label} from 'semantic-ui-react'
 
 
 class ChatsContainer extends React.Component {
@@ -56,25 +56,37 @@ class ChatsContainer extends React.Component {
 
     return (
       <div className="chatsContainer">
-            <Menu fluid vertical tabular='left' align='left' style={{fontSize:"15px"}}>
-              <Header as='h3' dividing style={{margin: "0.5em", padding:"0.25em", fontFamily:"Gill Sans", fontWeight:"550", color:"#1E79FF"}}>
-                Chats
-              </Header>
+        <Menu fluid vertical tabular='left' align='left'>
+
+          <Header
+            as='h3'
+            dividing
+            style={{margin: "0.5em", padding:"0.25em", fontFamily:"Gill Sans", fontWeight:"575", color:"#718CA1"}}
+            icon='conversation'
+            content='Chats' />
+            <Menu.Menu position='right' style={{fontSize:"15px", fontFamily:"Avenir"}}>
+            <Menu.Item style={{fontSize:"15px", fontFamily:"Avenir"}}>
+              <Input transparent icon='search' placeholder='Search Chats...' onChange={this.searchFieldListener} style={{fontSize:"15px", fontFamily:"Avenir"}}/>
+            </Menu.Item>
+          </Menu.Menu>
 
 
 
 
-              <ChatList chats={this.filterChats()} user={this.props.user} onClick={this.props.updateActiveChat}  activeChat={this.props.activeChat} activeChatMessages={this.props.activeChatMessages} activeChatId={this.props.chatId} messageDraftListener={this.messageDraftListener} handleNewMessageSubmit={this.props.handleNewMessageSubmit} />
 
-                <Menu.Item>
-                  <Input icon='search' placeholder='Search Chats...' onChange={this.searchFieldListener} />
-                </Menu.Item>
+
+
+            <ChatList chats={this.filterChats()} user={this.props.user} onClick={this.props.updateActiveChat}  activeChat={this.props.activeChat} activeChatMessages={this.props.activeChatMessages} activeChatId={this.props.chatId} messageDraftListener={this.messageDraftListener} handleNewMessageSubmit={this.props.handleNewMessageSubmit} />
+
+            <Menu.Item>
+              <Input icon='search' placeholder='Search Chats...' onChange={this.searchFieldListener} />
+            </Menu.Item>
           </Menu>
 
-      </div>
-    )
+        </div>
+      )
+    }
+
+
   }
-
-
-}
-export default ChatsContainer
+  export default ChatsContainer

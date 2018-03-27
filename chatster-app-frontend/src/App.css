@@ -19,7 +19,7 @@
 
 body {
   font-family: "Avenir";
-  color: #253858;
+  color: #2C3A51;
   background: #FCFDFD;
 }
 
@@ -69,12 +69,12 @@ body {
 }
 
 .navbar {
-  background: linear-gradient(#2C3A51, #465C7F);
+  background: linear-gradient(to bottom, #2C3A51, #536E97);
   color: white;
 }
 
 .logoPeriod {
-  color: #30c9e8;
+  color: #33CBC6;
 }
 
 .chat {

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as Actions from '../actions'
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import { Label } from 'semantic-ui-react'
+
 
 const link = {
   width: '100px',
@@ -16,7 +18,7 @@ const link = {
   marginLeft: '0.75em',
   marginRight: '0.75em',
   color: '#718CA1',
-  fontSize: '13px',
+  fontSize: '14px',
   alignText: "right",
   textDecoration: "none",
   borderRadius: "6px"
@@ -26,17 +28,24 @@ class NavBar extends React.Component {
 
   renderHTML = () => {
     if (!!this.props.user) {
+      console.log(this.props.user)
       return (
 
-      <span style={{padding:"1em", margin:"1em"}}>
+        <span style={{padding:"1em", margin:"1em"}}>
 
-        <span style={{float:"right", style:"inline"}}>
-          <NavLink to="/" exact style={link} activeStyle={{ color:"white", textDecoration:"none"}}>Profile</NavLink>
+          <span style={{float:"right", style:"inline"}}>
 
-          <NavLink onClick={this.props.logOutUser} to="/logout" exact style={link} activeStyle={{color:"white", textDecoration:"none"}}> Log Out </NavLink>
-        </span>
-      </span>
-  )
+            <NavLink to="/" exact style={link} activeStyle={{ color:"white", textDecoration:"none"}}>
+              <Label as='a' image style={{background:"#FCFDFD"}}>
+                <img src= {this.props.user.user.avatar} style={{fontSize:"14px", padding:"0.1em"}}/>
+                <span style={{fontSize:"14px", fontFamily:"Avenir", color:"#FF5370", background:"#FCFDFD"}}>{this.props.user.user.username}</span>
+
+              </Label></NavLink>
+
+              <NavLink onClick={this.props.logOutUser} to="/logout" exact style={link} activeStyle={{color:"white", textDecoration:"none"}}> Log Out </NavLink>
+            </span>
+          </span>
+        )
 
       } else {
         return (
@@ -55,9 +64,10 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div className="navbar" style={{padding:"1em", height:"100px"}}>
-        <span style={{fontSize:"36px", fontWeight:"800", fontFamily:"Avenir", style:"inline", marginTop:"0.75em", padding:"1em", alignment:"left"}}>Chatster<span className="logoPeriod">.</span></span>
-        {this.renderHTML()}
+      <div className="navbar" style={{padding:"0.75em", height:"120px"}}>
+        <div>{this.renderHTML()}</div>
+        <div style={{fontSize:"48px", fontWeight:"600", fontFamily:"Gill Sans", style:"inline", marginTop:"0.5em", padding:"0.25em", alignment:"center", position:"relative"}}>Chatster<span className="logoPeriod">.</span></div>
+
       </div>)
     }
 }

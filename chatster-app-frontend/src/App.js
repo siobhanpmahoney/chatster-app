@@ -114,7 +114,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NavBar loggedIn = {this.state.auth.user} logOutUser = {this.logOutUser} />
+          <NavBar loggedIn = {this.state.auth.user} user={this.props.user} logOutUser = {this.logOutUser} />
 
           <Route exact path="/login" render={() => <LoginForm setLoggedInUser={this.setLoggedInUser} /> } />
 

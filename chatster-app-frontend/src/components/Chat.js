@@ -17,7 +17,7 @@ import { List, Menu } from 'semantic-ui-react'
 
     render() {
       if (!this.props.chatUser) {
-        return <div>Loading...</div>
+        return <div></div>
       }
 
       return (

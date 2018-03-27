@@ -14,7 +14,7 @@ class FriendsContainer extends React.Component {
           <Header
             as='h3'
             dividing
-            style={{margin: "0.5em", padding:"0.25em", fontFamily:"Gill Sans", fontWeight:"575", color:"#718CA1"}}
+            style={{margin: "0.5em", padding:"0.25em", fontFamily:"Avenir", fontWeight:"575", color:"#718CA1"}}
             icon='users'
             content='Friends'
             />

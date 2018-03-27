@@ -19,7 +19,7 @@ class Friend extends React.Component {
     if (this.props.chats.length > 0) {
     return(
       <div style={{fontFamily:"Avenir"}}>
-        <Dropdown item text={this.props.friend.username} as="a" src={this.props.friend.avatar} name='friend' style={{fontFamily:"Gill Sans", fontWeight:"575", color:"#2C3A51"}}>
+        <Dropdown item text={this.props.friend.username} as="a" src={this.props.friend.avatar} name='friend' style={{fontFamily:"Avenir", fontWeight:"525", color:"#7590AC"}}>
           <Dropdown.Menu>
             {chats.map((chat) => {
               return <Dropdown.Item onClick={()=>this.props.updateActiveChat(chat.chat)} data-id={chat.chat.id}>

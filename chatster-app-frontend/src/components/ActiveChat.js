@@ -54,7 +54,8 @@ class ActiveChat extends React.Component {
         fontFamily:"Avenir",
         borderRadius:"4px",
         background: "linear-gradient( #b3e7ed91, #b3e7ed66)",
-        margin: "1em"
+        margin: "1em",
+        color: "#33475b"
       }
     } else {
       return {
@@ -65,7 +66,8 @@ class ActiveChat extends React.Component {
         fontFamily:"Avenir",
         borderRadius:"4px",
         background:"linear-gradient( #EBEFF3, #E8EEF4)",
-        margin: "1em"
+        margin: "1em",
+        color: "#33475b"
       }
     }
   }
@@ -92,9 +94,9 @@ render() {
     display = (<div className="activeChatWindowContainer">
     <div className="topBar">
       <Sticky>
-        <Button size='tiny' floated="right" onClick={this.closeChat} style={{ color:"#1E79FF", padding:"0.25em", marginBottom:"0.25em", marginLeft:"0.5em"}}><i class="material-icons">close</i></Button>
+        <Button size='tiny' floated="right" onClick={this.closeChat} style={{ color:"white", background:"silver", padding:"0.25em", marginBottom:"0.25em", marginLeft:"0.5em"}}><i class="material-icons">close</i></Button>
 
-        <Header as='h3' dividing style={{margin: "0.5em", padding:"0.25em", fontFamily:"Gill Sans", fontWeight:"550", color:"#1E79FF"}}>
+        <Header as='h3' dividing style={{margin: "0.5em", padding:"0.25em", fontFamily:"Avenir", fontWeight:"550", color:"#62B1C1"}}>
           {this.props.chat.title}
         </Header>
 
@@ -112,7 +114,7 @@ render() {
 
 
             <Comment.Content>
-              <Comment.Author as='a' style={{fontFamily:"Gill Sans", fontWeight:"550"}}>{m.username}</Comment.Author>
+              <Comment.Author as='a' style={{fontFamily:"Avenir", fontWeight:"550"}}>{m.username}</Comment.Author>
               <Comment.Metadata>{this.formattedDate(m.created_at)}</Comment.Metadata>
               <Comment.Text style={this.renderChat(m)}>{m.content}</Comment.Text>
             </Comment.Content>
@@ -130,7 +132,7 @@ render() {
   <Sticky>
     <div>
 
-      <button onClick={this.messageSend} type='submit' style={{padding:"0.25em", marginLeft:"0.2em", color:"#1E79FF", fontSize:"0.75em", borderRadius:"8px"}}><i class="material-icons" style={{size:"0.75em"}}>send</i></button>
+      <button onClick={this.messageSend} type='submit' style={{padding:"0.25em", marginLeft:"0.2em", color:"#FF5370", fontSize:"0.75em", borderRadius:"8px"}}><i class="material-icons" style={{size:"0.75em"}}>send</i></button>
 
       <textarea type='text' placeholder='Type a message!...' value={this.state.messageText} onChange={this.messageDraftListener} style={{fontFamily:"Avenir", width:"90%", margin:"0 0.5em 0.5em 0", minHeight: "75px", flexDirection: 'row', float:"right", padding:"0.25em", borderColor:"#BDBECB", borderRadius:"6px"}} />
 

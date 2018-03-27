@@ -108,13 +108,13 @@ class ChatsContainer extends React.Component {
           <Header
             as='h3'
             dividing
-            style={{margin: "0.5em", padding:"0.25em", fontFamily:"Gill Sans", fontWeight:"575", color:"#718CA1", clear:"both"}}
+            style={{margin: "0.5em", padding:"0.25em", fontFamily:"Avenir", fontWeight:"550", color:"#718CA1", clear:"both"}}
             icon='conversation'
             content='Chats' />
 
-          <Menu transparent fluid align='left' style={{border:"none", height:"80%", width:"96%", fontSize:"72%"}}>
+          <Menu transparent fluid align='left' style={{border:"none", height:"80%", width:"100%", fontSize:"72%", color:"#33475b"}}>
 
-          <Menu.Menu transparent position='right' compact icon='labeled' style={{FontFamily:"Avenir", display:"inline", float:"left"}}>
+          <Menu.Menu transparent position='right' compact icon='labeled' style={{FontFamily:"Avenir", float:"left"}}>
             <Menu.Item fitted style={{fontSize:"72%", fontFamily:"Avenir"}}>
               <Input transparent icon='search' placeholder='Search Chats...' onChange={this.searchFieldListener} style={{fontFamily:"Avenir", display:"inline", float:"left", fontSize:"72%"}} />
             </Menu.Item>
@@ -123,14 +123,15 @@ class ChatsContainer extends React.Component {
 <Dropdown
   button
   className='icon'
-  floating
   labeled
+  fluid
+  align='left'
   icon='sort content ascending'
   options={sortOptions}
   search
   onChange={this.chooseSort}
-  style={{display:"inline", float:"left", fontSize:"72%", marginRight:"0.1em"}}
-  text='Sort by...'
+  style={{fontSize:"70%", marginRight:"0.1em", clear:"both", display:"block", color:"#62B1C1", backgroundColor:"#FCFDFD"}}
+  text="Sort.."
 />
 
 

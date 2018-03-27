@@ -19,8 +19,8 @@
 
 body {
   font-family: "Avenir";
-  color: #2C3A51;
-  background: #FCFDFD;
+  color: #33475b;
+  background-color: #FCFDFD;
 }
 
 .topBar {
@@ -32,7 +32,8 @@ body {
 }
 
 .chatsContainer {
-  margin: 0 1em 0 0;
+
+  alignment: left;
 }
 
 
@@ -84,18 +85,21 @@ body {
 .chat {
 
   font: "Avenir";
-  margin: 0.25em;
-  padding: 0.25em;
+
+  alignment: 'left';
 
 }
 
 
 .chatList {
   font-family: "Avenir";
+
 }
 
 .chatList {
   font-size: 14px;
+  alignment: left;
+  width: 100%
 
 }
 
@@ -109,9 +113,9 @@ body {
 }
 
 .newChatForm h1, h2, h3, h4, h5, h6 {
-  font-family: "Gill Sans";
+  font-family: "Avenir";
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Gill Sans"
+  font-family: "Avenir"
 }

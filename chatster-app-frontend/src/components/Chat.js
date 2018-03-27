@@ -1,6 +1,6 @@
 import React from 'react'
 import ActiveChat from './ActiveChat.js'
-import { List, Menu } from 'semantic-ui-react'
+import { List, Menu, Image } from 'semantic-ui-react'
 
   class Chat extends React.Component {
     constructor(props) {
@@ -9,9 +9,9 @@ import { List, Menu } from 'semantic-ui-react'
 
     style = () => {
       if (this.props.chat.id == this.props.activeChat.id) {
-        return {fontSize:"1em", color:'#2C3A51', background:"#CDF1F7"}
+        return {fontSize:"0.9em", color:'#7590AC', float:"left", width:"100%", display:"inlineBlock", background:"linear-gradient(to bottom right, #b3e7ed66, #85C8C5)"}
       } else {
-        return {color:'#2C3A51', fontSize:"1em"}
+        return {color:'#7590AC', fontSize:"0.9em", width:"100%", float:"left", display:"inlineBlock"}
       }
     }
 
@@ -22,16 +22,20 @@ import { List, Menu } from 'semantic-ui-react'
 
       return (
 
-        <div style={{fontFamily:"Avenir"}}>
+        <div style={{fontFamily:"Avenir", width:"100%", display:"inlineBlock", float:"left", color:'#7590AC'}}>
           <Menu.Item size='large' style={this.style()} onClick={()=>this.props.onClick(this.props.chat)} data-id={this.props.key}>
-            <img src={this.props.chatUser.avatar} style={{width:"25px", borderRadius:"12px", display:"inline", float:"left"}}/>
-
-          <span style={{display:"inlineBlock"}}>
-
-            <span style={{fontFamily:"Gill Sans", fontWeight:"550", margin:"0.5em 0.25em 0.15em 0.5em", padding:"0.5em", display:"inline", display:"inline"}}>{this.props.title}</span><br />
-            <span style={{fontFamily:"Avenir", margin:"0.5em 0.25em 0.15em 0.5em", padding:"0.5em", display:"inline"}}>{this.props.chatUser.username}</span>
-          </span>
+            <List style={{width:"100%"}}>
+              <List.Item style={{float:"left"}}>
+                <Image avatar src={this.props.chatUser.avatar} style={{float:"left"}}/>
+                <List.Content>
+                  <List.Header style={{float:"left", color:"#7590AC", fontSize:"13px", fontFamily:"Avenir"}}>{this.props.title}</List.Header><br />
+                  <List.Description style={{float:"left"}}>{this.props.chatUser.username}</List.Description>
+                </List.Content>
+              </List.Item>
+            </List>
           </Menu.Item>
+
+
 
 
 

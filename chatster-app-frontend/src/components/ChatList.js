@@ -17,7 +17,7 @@ const ChatList = (props) => {
 
         {props.chats.map((chat) => {
 
-          return <div style={{fontFamily:"Avenir", overflow:"auto", maxHeight: "200px", clear:"both"}}>
+          return <div style={{fontFamily:"Avenir", overflow:"auto", maxHeight: "200px", clear:"both", color:"#33475b"}}>
 
             <Chat chat={chat.chat}
               chatUser={chat.users.find((user) => {

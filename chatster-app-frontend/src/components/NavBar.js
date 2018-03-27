@@ -66,7 +66,7 @@ class NavBar extends React.Component {
     return (
       <div className="navbar" style={{padding:"0.75em", height:"120px"}}>
         <div>{this.renderHTML()}</div>
-        <div style={{fontSize:"48px", fontWeight:"600", fontFamily:"Gill Sans", style:"inline", marginTop:"0.5em", padding:"0.25em", alignment:"center", position:"relative"}}>Chatster<span className="logoPeriod">.</span></div>
+        <div style={{fontSize:"48px", fontWeight:"600", fontFamily:"Avenir", style:"inline", marginTop:"0.5em", padding:"0.25em", alignment:"center", position:"relative"}}>Chatster<span className="logoPeriod">.</span></div>
 
       </div>)
     }

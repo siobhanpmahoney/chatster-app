@@ -62,9 +62,7 @@ class ChatsContainer extends React.Component {
   sortChats = () => {
     console.log(this.state)
     let chats = []
-    if (this.state.sortSelection == '') {
-      return this.props.chats
-    } else if (this.state.sortSelection == 'friend') {
+    if (this.state.sortSelection == 'friend') {
       return this.props.chats.sort((a,b) => {
         let uNMEa = this.userNotMe(a)
         let uNMEb = this.userNotMe(b)
@@ -76,6 +74,16 @@ class ChatsContainer extends React.Component {
         let bDate = new Date(b.messages[b.messages.length-1].created_at).valueOf()
         return bDate - aDate
       })
+    } else if (this.state.sortSelection == 'conversationDate') {
+      return this.props.chats.sort((a,b) => {
+
+        let aDate = new Date(a.chat.created_at).valueOf()
+        let bDate = new Date(b.chat.created_at).valueOf()
+        return aDate - bDate
+      })
+    }
+    else {
+      return this.props.chats
     }
   }
 

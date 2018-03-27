@@ -67,10 +67,14 @@ class ChatsContainer extends React.Component {
     } else if (this.state.sortSelection == 'friend') {
       return this.props.chats.sort((a,b) => {
         let uNMEa = this.userNotMe(a)
-        console.log(uNMEa)
         let uNMEb = this.userNotMe(b)
-        console.log(uNMEb)
         return uNMEa.username.localeCompare(uNMEb.username)
+      })
+    } else if (this.state.sortSelection == 'recentMessage') {
+      return this.props.chats.sort((a,b) => {
+        let aDate = new Date(a.messages[a.messages.length-1].created_at).valueOf()
+        let bDate = new Date(b.messages[b.messages.length-1].created_at).valueOf()
+        return bDate - aDate
       })
     }
   }

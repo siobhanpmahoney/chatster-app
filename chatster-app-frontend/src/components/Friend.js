@@ -12,12 +12,16 @@ class Friend extends React.Component {
   }
 
   render() {
+    const chats=this.props.chats.filter((chat) => {
+      return chat.users.find((u) => {
+        return u.id == this.props.friend.id
+      })})
     if (this.props.chats.length > 0) {
     return(
-      <div style={{fontFamily:"Nunito Sans"}}>
+      <div style={{fontFamily:"Avenir"}}>
         <Dropdown item text={this.props.friend.username} name='friend'>
           <Dropdown.Menu>
-            {this.props.chats.map((chat) => {
+            {chats.map((chat) => {
               return <Dropdown.Item onClick={()=>this.props.updateActiveChat(chat.chat)} data-id={chat.chat.id}>
               {chat.chat.title}
               </Dropdown.Item>

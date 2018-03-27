@@ -1,7 +1,7 @@
 import React from "react";
 import ChatList from './ChatList'
 import ActiveChatContainer from './ActiveChatContainer'
-import { Grid, Menu, Input} from 'semantic-ui-react'
+import { Grid, Menu, Input, Header} from 'semantic-ui-react'
 
 
 class ChatsContainer extends React.Component {
@@ -57,11 +57,14 @@ class ChatsContainer extends React.Component {
     return (
       <div className="chatsContainer">
             <Menu fluid vertical tabular='left' align='left' style={{fontSize:"15px"}}>
-              <Menu.Item style={{fontFamily:"Nunito Sans", fontSize: "20px"}}>Chats <button onClick = {this.props.renderNewChatForm} style={{borderRadius:"10px", fontSize:"13px"}}><i class="material-icons" style={{fontSize:"13px"}}>add</i></button></Menu.Item>
+              <Header as='h3' dividing style={{margin: "0.5em", padding:"0.25em", fontFamily:"Gill Sans", fontWeight:"550", color:"#1E79FF"}}>
+                Chats
+              </Header>
 
 
 
-              <ChatList chats={this.filterChats()} user={this.props.user} onClick={this.props.updateActiveChat}  activeChatMessages={this.props.activeChatMessages} activeChatId={this.props.chatId} messageDraftListener={this.messageDraftListener} handleNewMessageSubmit={this.props.handleNewMessageSubmit} />
+
+              <ChatList chats={this.filterChats()} user={this.props.user} onClick={this.props.updateActiveChat}  activeChat={this.props.activeChat} activeChatMessages={this.props.activeChatMessages} activeChatId={this.props.chatId} messageDraftListener={this.messageDraftListener} handleNewMessageSubmit={this.props.handleNewMessageSubmit} />
 
                 <Menu.Item>
                   <Input icon='search' placeholder='Search Chats...' onChange={this.searchFieldListener} />

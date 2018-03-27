@@ -51,9 +51,9 @@ class ActiveChat extends React.Component {
         overflow:"auto",
         maxHeight: "400px",
         scrollBehavior: "smooth",
-        fontFamily:"Nunito Sans",
+        fontFamily:"Avenir",
         borderRadius:"4px",
-        backgroundColor:"#b3e7ed66",
+        background: "linear-gradient( #b3e7ed91, #b3e7ed66)",
         margin: "1em"
       }
     } else {
@@ -62,34 +62,48 @@ class ActiveChat extends React.Component {
         overflow:"auto",
         maxHeight: "400px",
         scrollBehavior: "smooth",
-        fontFamily:"Nunito Sans",
+        fontFamily:"Avenir",
         borderRadius:"4px",
-        backgroundColor:"#F9FBFC",
+        background:"linear-gradient( #EBEFF3, #E8EEF4)",
         margin: "1em"
       }
     }
   }
+
+  formattedDate = (dateSent) => {
+    let today = new Date()
+    let dateSaved = new Date(dateSent)
+    if (today.toLocaleDateString() == dateSaved.toLocaleDateString()) {
+      return `Today at ${dateSaved.toLocaleTimeString()}`
+    }
+  else {
+    return `${dateSaved.toLocaleDateString()} at ${dateSaved.toLocaleTimeString()}`
+  }
+}
 
 
 
   render() {
     let display = null
     if (this.props.messages.length < 1) {
-      display = <h3 className="nothing-to-display">{this.props.renderNewChatForm()}</h3>
+      display = <h3 className="nothing-to-display">Get Chatting!</h3>
     }
     else {
       display = (<div className="activeChatWindowContainer">
       <div className="topBar">
         <Sticky>
-            <Button size='tiny' floated="right" onClick={this.closeChat} style={{ color:"#718CA1", backgroundColor: "white", padding:"0.5em", marginBottom:"1em", marginLeft:"1em"}}><i class="material-icons">close</i></Button>
-          <Header dividing style={{padding:"0.25em", fontFamily:"Nunito Sans"}}>
+            <Button size='tiny' floated="right" onClick={this.closeChat} style={{ color:"#718CA1", padding:"0.25em", marginBottom:"0.25em", marginLeft:"0.5em"}}><i class="material-icons">close</i></Button>
 
-            {this.props.chat.title}
-          </Header>
+            <Header as='h3' dividing style={{margin: "0.5em", padding:"0.25em", fontFamily:"Gill Sans", fontWeight:"550", color:"#1E79FF"}}>
+                {this.props.chat.title}
+            </Header>
+
+
+
 
         </Sticky>
       </div>
-
+<div>
       <Comment.Group>
         <div className="messageHistory" scroll>
         {this.props.messages.map((m) => {
@@ -100,7 +114,8 @@ class ActiveChat extends React.Component {
 
 
                     <Comment.Content>
-                      <Comment.Author as='a'>{m.username}</Comment.Author>
+                      <Comment.Author as='a' style={{fontFamily:"Gill Sans", fontWeight:"550"}}>{m.username}</Comment.Author>
+                      <Comment.Metadata>{this.formattedDate(m.created_at)}</Comment.Metadata>
                       <Comment.Text style={this.renderChat(m)}>{m.content}</Comment.Text>
                     </Comment.Content>
 
@@ -117,13 +132,13 @@ class ActiveChat extends React.Component {
           </Comment.Content>
         </Comment>
       </Comment.Group>
-
+</div>
       <Sticky>
 <div>
 
         <button onClick={this.messageSend} type='submit' style={{padding:"0.25em", marginLeft:"0.2em", color:"blue", fontSize:"0.75em", borderRadius:"8px"}}><i class="material-icons" style={{size:"0.75em"}}>send</i></button>
 
-        <textarea type='text' placeholder='Type a message!...' value={this.state.messageText} onChange={this.messageDraftListener} style={{fontFamily:"Nunito Sans", width:"90%", margin:"0 0.75em 0 0", minHeight: "80px", flexDirection: 'row', float:"right", padding:"0.25em", borderRadius:"6px"}} />
+        <textarea type='text' placeholder='Type a message!...' value={this.state.messageText} onChange={this.messageDraftListener} style={{fontFamily:"Avenir", width:"90%", margin:"0 0.5em 0.5em 0", minHeight: "75px", flexDirection: 'row', float:"right", padding:"0.25em", borderRadius:"6px"}} />
 
 </div>
       </Sticky>
@@ -133,7 +148,7 @@ class ActiveChat extends React.Component {
     }
 
         return (
-          <div style={{fontFamily:"Nunito Sans", background:"white", maxHeight:"300px"}}>
+          <div style={{fontFamily:"Avenir"}}>
             {display}
           </div>
         )

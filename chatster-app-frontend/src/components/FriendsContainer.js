@@ -1,6 +1,6 @@
 import React from "react";
 import FriendList from './FriendList';
-import { Button, Menu } from 'semantic-ui-react'
+import { Button, Menu, Header } from 'semantic-ui-react'
 
 
 class FriendsContainer extends React.Component {
@@ -10,7 +10,10 @@ class FriendsContainer extends React.Component {
 
       <div className="friendsContainer">
         <Menu fluid vertical tabular="left">
-          <Menu.Item header style={{fontFamily:"Nunito Sans"}} size='large'>Friends</Menu.Item>
+          <Header as='h3' dividing style={{margin: "0.5em", padding:"0.25em", fontFamily:"Gill Sans", fontWeight:"550", color:"#1E79FF"}}>
+
+            Friends
+          </Header>
 
         <FriendList friends={this.props.friends} chats={this.props.chats} user={this.props.user} addResponseToState={this.props.addResponseToState} handleCloseChat={this.props.handleCloseChat} handleNewMessageSubmit={this.props.handleNewMessageSubmit} fetchActiveChatInfo={this.props.fetchActiveChatInfo} updateActiveChat={this.props.updateActiveChat} activeChatMessages={this.props.activeChatMessages} activeChat={this.props.activeChat}/>
         </Menu>

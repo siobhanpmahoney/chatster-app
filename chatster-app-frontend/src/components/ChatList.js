@@ -8,14 +8,16 @@ import { List, Menu } from 'semantic-ui-react'
 
 const ChatList = (props) => {
 
-  console.log("Chatlist", props.chats)
-
+  if (props.chats.length < 0) {
+    return <div>Loading..</div>
+  }
   return(
+
     <div className="chatList">
 
         {props.chats.map((chat) => {
 
-          return <div style={{fontFamily:"Avenir", overflow:"auto", maxHeight: "200px"}}>
+          return <div style={{fontFamily:"Avenir", overflow:"auto", maxHeight: "200px", clear:"both"}}>
 
             <Chat chat={chat.chat}
               chatUser={chat.users.find((user) => {

@@ -31,6 +31,10 @@ body {
   font-family: "Avenir"
 }
 
+.chatsContainer {
+  margin: 0 1em 0 0;
+}
+
 
 
 .messageDisplay {

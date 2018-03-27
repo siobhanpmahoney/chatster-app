@@ -1,4 +1,7 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from '../actions'
 import Chat from './Chat'
 import { Menu, Dropdown } from 'semantic-ui-react'
 
@@ -9,8 +12,7 @@ class Friend extends React.Component {
   }
 
   render() {
-
-
+    if (this.props.chats.length > 0) {
     return(
       <div style={{fontFamily:"Nunito Sans"}}>
         <Dropdown item text={this.props.friend.username} name='friend'>
@@ -23,8 +25,22 @@ class Friend extends React.Component {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-    )
+    )} else {
+      return <div>Loading..</div>
+    }
   }
 }
 
-export default Friend
+function mapStateToProps(state, props) {
+  return {
+    user: state.user.user,
+    friends: state.user.friends,
+    chats: state.user.chats,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+export default (connect(mapStateToProps, mapDispatchToProps)(Friend));

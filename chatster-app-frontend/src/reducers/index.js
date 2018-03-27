@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { CURRENT_USER } from '../actions'
+import { CURRENT_USER, ADD_NEW_CHAT } from '../actions'
 
 const user = (state = {user: null, friends: [], chats: [] }, action) => {
   switch(action.type) {
@@ -12,11 +12,23 @@ const user = (state = {user: null, friends: [], chats: [] }, action) => {
         chats: action.chats,
       }
     );
-    console.log(state.chats)
-    return state;
+
+      return state;
+
+    case ADD_NEW_CHAT:
+    
+      let currentChats = state.chats
+      state = Object.assign({},
+        state,
+        {
+          chats: [...currentChats, action.newChat]
+        }
+      )
+      console.log(state)
+      return state;
 
     default:
-    return state;
+      return state;
   }
 
 }

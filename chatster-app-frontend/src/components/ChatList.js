@@ -7,15 +7,15 @@ import { List, Menu } from 'semantic-ui-react'
 
 
 const ChatList = (props) => {
-  console.log("Chatlist", props)
+
+  console.log("Chatlist", props.chats)
 
   return(
     <div className="chatList">
-      <Menu fluid vertical tabular='right' align="left" large>
 
         {props.chats.map((chat) => {
 
-          return <div style={{fontFamily:"Nunito Sans", overflow:"auto", maxHeight: "300px"}}>
+          return <div style={{fontFamily:"Nunito Sans", overflow:"auto", maxHeight: "200px"}}>
 
             <Chat chat={chat.chat}
               chatUser={chat.users.find((user) => {
@@ -28,7 +28,7 @@ const ChatList = (props) => {
 
         })}
 
-</Menu>
+
     </div>
   )
 }

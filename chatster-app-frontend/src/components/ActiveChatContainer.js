@@ -24,7 +24,7 @@ class ActiveChatContainer extends React.Component {
                 }
               } />
             { this.props.chat &&
-            <ActiveChat chat={this.props.chat} user={this.props.user} chat={this.props.chat} messages={this.props.messages}  handleNewMessageSubmit={this.props.handleNewMessageSubmit} handleCloseChat={this.props.handleCloseChat} /> }
+            <ActiveChat chat={this.props.chat} user={this.props.user} chat={this.props.chat} messages={this.props.messages}  handleNewMessageSubmit={this.props.handleNewMessageSubmit} handleCloseChat={this.props.handleCloseChat} renderNewChatForm={this.props.renderNewChatForm}/> }
             </div>
           )
         }

@@ -18,13 +18,71 @@ class UserPage extends React.Component {
       allUsers: [],
       activeChatMessages: [],
       activeChat: [],
+      newChat: {}
     }
   }
 
+  componentDidMount() {
+    let allChats = this.props.chats
+    this.setState({
+      displayedChats: allChats
+    })
+  }
 
-  startNewChat = () => {
+
+  renderNewChatForm = () => {
+    return <div className="newChatForm">
+      <h3>Start a new chat!</h3>
+      <form>
+        <label>Choose a friend!: <select name="user2" onChange={this.captureNewChatInfo}>
+          <option value=''>Select...</option>
+          {this.props.friends.map((friend => {
+            return<option value={friend.id}>{friend.username}</option>
+          }))}
+        </select></label>
+
+        <p><label>Title:
+          <input type='text' name='title' onChange={this.captureNewChatInfo} />
+        </label></p>
+
+        <span><button onClick={this.sendNewChat} style={{padding:"0.25em", marginLeft:"0.2em", color:"blue", fontSize:"0.75em", borderRadius:"8px", display:"inlineBlock"}}><i class="material-icons" style={{size:"0.75em"}}>send</i></button>
+
+        <textarea type='text' placeholder='Type a message!...' name='messageContent' onChange={this.captureNewChatInfo} style={{width:"90%", minHeight: "80px", padding:"0.25em", borderRadius:"6px", display:"inlineBlock", float:"right"}} /> </span>
+
+      </form>
+    </div>
+  }
+
+  captureNewChatInfo = (event) => {
+    event.preventDefault()
+    let value = event.target.value
+    let name = event.target.name
+    let user1 = {user1: this.props.user.id}
+    let previousState = this.state.newChat
+    let newChatState = Object.assign({}, previousState)
+    newChatState['user1'] = this.props.user.user.id
+    newChatState[name] = value
+    this.setState({
+      newChat: newChatState
+    })
+  }
+
+  sendNewChat = (event) => {
+    event.preventDefault()
+    let nc = this.state.newChat
+    this.props.createNewChat(nc), this.locateAndRenderNewChat
+    let allChats = this.props.chats
 
   }
+
+  locateAndRenderNewChat = (event) => {
+    event.preventDefault()
+
+
+    console.log("hi")
+  }
+
+
 
   //fetching chat archive from backend
 
@@ -38,7 +96,7 @@ class UserPage extends React.Component {
     fetch(`http://localhost:3000/api/v1/chats/${chat.id}`)
     .then(response => response.json())
     .then(json => {
-      console.log(json)
+
       this.setState({
         activeChatMessages: json.messages,
         activeChat: json.chat,
@@ -51,12 +109,10 @@ class UserPage extends React.Component {
 
   handleNewMessageSubmit = (event, chat, message) => {
     event.preventDefault()
-    console.log(chat)
-    console.log(message)
+
     let u = this.props.user
 
     let newMessage = {content: message, chat_id: chat.id, user_id: this.props.user.user.id, chat: chat}
-    console.log(newMessage)
 
     const url = 'http://localhost:3000/api/v1/chats/' + this.state.activeChat.id +'/messages';
 
@@ -102,9 +158,9 @@ class UserPage extends React.Component {
 
   }
 
+
+
   render() {
-
-
     return (
       <div>
 
@@ -126,21 +182,21 @@ class UserPage extends React.Component {
 
 
               <div><ChatsContainer user={this.props.user}
-                chats={this.props.chats} friends={this.props.friends}
+                chats={this.props.chats} friends={this.props.friends} renderNewChatForm = {this.renderNewChatForm}
                 addResponseToState={this.addResponseToState}
                 handleCloseChat={this.handleCloseChat}
                 handleNewMessageSubmit={this.handleNewMessageSubmit}
                 fetchActiveChatInfo={this.fetchActiveChatInfo}
                 updateActiveChat={this.updateActiveChat}
                 activeChatMessages={this.state.activeChatMessages}
-                activeChat={this.state.activeChat}/></div>
+                activeChat={this.state.activeChat} /></div>
 
             }
           </Grid.Column>
 
           <Grid.Column width={9} textAlign={"left"}>
             <div className="activeChatComponent">
-              <ActiveChatContainer user={this.props.user} user={this.props.user} chat={this.state.activeChat} messages={this.state.activeChatMessages}  handleNewMessageSubmit={this.handleNewMessageSubmit} updateChat={this.updateActiveChat} handleCloseChat={this.handleCloseChat}/>
+              <ActiveChatContainer user={this.props.user} user={this.props.user} chat={this.state.activeChat} messages={this.state.activeChatMessages}  handleNewMessageSubmit={this.handleNewMessageSubmit} renderNewChatForm={this.renderNewChatForm} updateChat={this.updateActiveChat} handleCloseChat={this.handleCloseChat}/>
             </div>
           </Grid.Column>
         </Grid>

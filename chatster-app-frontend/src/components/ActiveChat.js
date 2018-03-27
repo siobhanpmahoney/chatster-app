@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Comment, Form, Header, Label, Segment, Sticky, Icon, Feed, Grid } from 'semantic-ui-react'
+import { Button, Comment, Form, Header, Label, Segment, Sticky, Icon, Feed, Grid, Select, Input } from 'semantic-ui-react'
 
 
 
@@ -31,11 +31,16 @@ class ActiveChat extends React.Component {
     this.setState({
       messageText: ""
     })
+
   }
 
   closeChat = (event) => {
     event.preventDefault()
     this.props.handleCloseChat(this.chat), this.renderNoChats
+  }
+
+  renderNewChat = () => {
+
   }
 
   renderChat = (message) => {
@@ -68,10 +73,9 @@ class ActiveChat extends React.Component {
 
 
   render() {
-    console.log(this.props)
     let display = null
     if (this.props.messages.length < 1) {
-      display = <h3 className="nothing-to-display">Nothing to display</h3>
+      display = <h3 className="nothing-to-display">{this.props.renderNewChatForm()}</h3>
     }
     else {
       display = (<div className="activeChatWindowContainer">
@@ -86,10 +90,8 @@ class ActiveChat extends React.Component {
         </Sticky>
       </div>
 
-
-
       <Comment.Group>
-        <div className="messageHistory">
+        <div className="messageHistory" scroll>
         {this.props.messages.map((m) => {
           return(<Comment key={m.id} className="messageDisplay" >
 
@@ -111,14 +113,20 @@ class ActiveChat extends React.Component {
         <Comment>
           <Comment.Content>
             <Form inline reply>
-              <Sticky>
-                <Form.TextArea value={this.state.messageText} onChange={this.messageDraftListener} />
-                <Button onClick={this.messageSend} labelPosition='left' icon='send outline' primary />
-              </Sticky>
             </Form>
           </Comment.Content>
         </Comment>
       </Comment.Group>
+
+      <Sticky>
+<div>
+
+        <button onClick={this.messageSend} type='submit' style={{padding:"0.25em", marginLeft:"0.2em", color:"blue", fontSize:"0.75em", borderRadius:"8px"}}><i class="material-icons" style={{size:"0.75em"}}>send</i></button>
+
+        <textarea type='text' placeholder='Type a message!...' value={this.state.messageText} onChange={this.messageDraftListener} style={{fontFamily:"Nunito Sans", width:"90%", margin:"0 0.75em 0 0", minHeight: "80px", flexDirection: 'row', float:"right", padding:"0.25em", borderRadius:"6px"}} />
+
+</div>
+      </Sticky>
 
 
     </div>)

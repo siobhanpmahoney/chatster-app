@@ -10,84 +10,43 @@ class ChatsContainer extends React.Component {
     this.state = {
       activeChatMessages: [],
       activeChat: [],
+      chatSearch: ""
     }
   }
 
-  startNewChat = () => {
 
+
+  searchFieldListener = (event) => {
+    console.log(event.target.value)
+    let searchV = event.target.value
+
+    this.setState({
+      chatSearch: searchV
+    })
   }
 
-//fetching chat archive from backend
+  filterChats = () => {
 
-// updateActiveChat = (selectChat) => {
-//
-//   this.fetchActiveChatInfo(selectChat)
-// }
+    let filteredChats = []
+    if (this.state.chatSearch == "") {
+      filteredChats = this.props.chats
+    } else {
+      let sv = this.state.chatSearch
+      this.props.chats.map((chat) => {
+        return chat.messages.map((message) => {
+          if (message.content.includes(sv) && !filteredChats.includes(chat)) {
+            filteredChats.push(chat)
 
-// fetchActiveChatInfo = (chat) => {
-//   fetch(`http://localhost:3000/api/v1/chats/${chat.id}`)
-//   .then(response => response.json())
-//   .then(json => {
-//     console.log(json)
-//     this.setState({
-//       activeChatMessages: json.messages,
-//       activeChat: chat,
-//     })
-//   })
-//
-// }
+          }
+        })
+      })
+    }
 
-//sending new message to backend and returning updated backend data
-//
-// handleNewMessageSubmit = (event, chat, message) => {
-//   event.preventDefault()
-//
-//   let newMessage = {content: message, chat_id: chat.id, user_id: this.props.user.id, chat: chat}
-//
-//   const url = 'http://localhost:3000/api/v1/chats/' + this.state.activeChat.id +'/messages';
-//
-//   fetch(url,
-//     {
-//       method: 'post',
-//       headers:{
-//         'Content-Type': 'application/json',
-//         'Accepts': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       messages: {
-//         content: message,
-//         chat_id: chat.id,
-//         user_id: this.props.user.id,
-//         chat: chat
-//       }
-//     })
-//   })
-//   .then((response) => response.json())
-//   .then(json => {
-//     this.addResponseToState(json)
-//   })
-// }
+    return filteredChats
+  }
 
-  // addResponseToState = (json) => {
-  //   let currentMessageState = this.state.activeChatMessages.slice()
-  //
-  //   this.setState({
-  //     activeChatMessages: [...currentMessageState, json[json.length-1]]
-  //   })
-  // }
 
-  // handleCloseChat = (chat) => {
-  //   let setChatState = []
-  //   let messageState = this.state.activeChatMessages
-  //
-  //   messageState.splice(0)
-  //
-  //   this.setState({
-  //     activeChatMessages: messageState,
-  //     activeChat: setChatState
-  //   })
-  //
-  // }
+
 
   render() {
 
@@ -95,19 +54,20 @@ class ChatsContainer extends React.Component {
       return<div>loading..</div>
     }
 
-
     return (
       <div className="chatsContainer">
-
-            <Menu fluid vertical tabular='left' style={{size:"16px"}}>
-              <Menu.Item header style={{fontFamily:"Nunito Sans"}}>Chats</Menu.Item>
-
+            <Menu fluid vertical tabular='left' align='left' style={{fontSize:"15px"}}>
+              <Menu.Item style={{fontFamily:"Nunito Sans", fontSize: "20px"}}>Chats <button onClick = {this.props.renderNewChatForm} style={{borderRadius:"10px", fontSize:"13px"}}><i class="material-icons" style={{fontSize:"13px"}}>add</i></button></Menu.Item>
 
 
-              <ChatList chats={this.props.chats} user={this.props.user} onClick={this.props.updateActiveChat}  activeChatMessages={this.props.activeChatMessages} activeChatId={this.props.chatId} messageDraftListener={this.messageDraftListener} handleNewMessageSubmit={this.props.handleNewMessageSubmit} />
 
+              <ChatList chats={this.filterChats()} user={this.props.user} onClick={this.props.updateActiveChat}  activeChatMessages={this.props.activeChatMessages} activeChatId={this.props.chatId} messageDraftListener={this.messageDraftListener} handleNewMessageSubmit={this.props.handleNewMessageSubmit} />
+
+                <Menu.Item>
+                  <Input icon='search' placeholder='Search Chats...' onChange={this.searchFieldListener} />
+                </Menu.Item>
           </Menu>
-      
+
       </div>
     )
   }

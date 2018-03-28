@@ -99,9 +99,82 @@ end
 
 
 
+#user_ids: 1, 14
+
+
+Message.create(
+  content: "#{Faker::Hacker.ingverb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun} in #{Faker::ProgrammingLanguage.name}",
+  user_id: 1,
+  chat_id: 100
+)
+
+Message.create(
+  content: "#{Faker::Hacker.ingverb} #{Faker::Hacker.abbreviation}",
+  user_id: 14,
+  chat_id: 100
+)
+
+Message.create(
+  content: "#{Faker::Hacker.ingverb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun} in #{Faker::ProgrammingLanguage.name}",
+  user_id: 1,
+  chat_id: 100
+)
+
+Message.create(
+  content:"#{Faker::Hacker.ingverb} #{Faker::Hacker.abbreviation}",
+  user_id: 14,
+  chat_id: 100
+)
+
+Message.create(
+  content: "#{Faker::Hacker.ingverb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun} in #{Faker::ProgrammingLanguage.name}",
+  user_id: 14,
+  chat_id: 100
+)
+
+Message.create(
+  content: "#{Faker::Hacker.ingverb} #{Faker::Hacker.abbreviation}",
+  user_id: 1,
+  chat_id: 100
+)
 
 
 
+Message.create(
+  content: "#{Faker::Hacker.ingverb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun} in #{Faker::ProgrammingLanguage.name}",
+  user_id: 14,
+  chat_id: 100
+)
+
+Message.create(
+  content: "#{Faker::Hacker.ingverb} #{Faker::Hacker.abbreviation}",
+  user_id: 14,
+  chat_id: 100
+)
+
+Message.create(
+  content: Faker::Hacker.say_something_smart,
+  user_id: 1,
+  chat_id: 100
+)
+
+Message.create(
+  content: "#{Faker::Hacker.ingverb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun} in #{Faker::ProgrammingLanguage.name}",
+  user_id: 14,
+  chat_id: 100
+)
+
+Message.create(
+  content: "#{Faker::Hacker.ingverb} #{Faker::Hacker.abbreviation}",
+  user_id: 1,
+  chat_id: 100
+)
+
+Message.create(
+  content: Faker::Hacker.say_something_smart,
+  user_id: 14,
+  chat_id: 100
+)
 
 
 

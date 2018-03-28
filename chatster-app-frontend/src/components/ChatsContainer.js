@@ -112,11 +112,11 @@ class ChatsContainer extends React.Component {
             icon='conversation'
             content='Chats' />
 
-          <Menu transparent fluid align='left' style={{border:"none", height:"80%", width:"100%", fontSize:"72%", color:"#33475b"}}>
+          <Menu transparent fluid align='left' style={{border:"none", height:"80%", width:"100%", fontSize:"88%", color:"#33475b"}}>
 
           <Menu.Menu transparent position='right' compact icon='labeled' style={{FontFamily:"Avenir", float:"left"}}>
-            <Menu.Item fitted style={{fontSize:"72%", fontFamily:"Avenir"}}>
-              <Input transparent icon='search' placeholder='Search Chats...' onChange={this.searchFieldListener} style={{fontFamily:"Avenir", display:"inline", float:"left", fontSize:"72%"}} />
+            <Menu.Item fitted style={{fontSize:"64%", fontFamily:"Avenir"}}>
+              <Input transparent icon='search' placeholder='Search Chats...' onChange={this.searchFieldListener} style={{fontFamily:"Avenir", display:"inline", float:"left", fontSize:"64%"}} />
             </Menu.Item>
 </Menu.Menu>
 
@@ -130,7 +130,7 @@ class ChatsContainer extends React.Component {
   options={sortOptions}
   search
   onChange={this.chooseSort}
-  style={{fontSize:"70%", marginRight:"0.1em", clear:"both", display:"block", color:"#62B1C1", backgroundColor:"#FCFDFD"}}
+  style={{marginRight:"0.1em", clear:"both", display:"block", color:"#62B1C1", backgroundColor:"#FCFDFD"}}
   text="Sort.."
 />
 

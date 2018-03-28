@@ -170,7 +170,7 @@ class UserPage extends React.Component {
 
             </Grid.Column>
           </Grid.Row>
-          <Grid.Column width={4} textAlign={"left"} style={{color:"#33475b"}}>
+          <Grid.Column width={3} textAlign={"left"} style={{color:"#33475b"}}>
             {!!this.props.friends &&
 
               <FriendsContainer user={this.props.user} chats={this.props.chats} friends={this.props.friends} addResponseToState={this.addResponseToState} handleCloseChat={this.handleCloseChat} handleNewMessageSubmit={this.handleNewMessageSubmit} fetchActiveChatInfo={this.fetchActiveChatInfo} updateActiveChat={this.updateActiveChat} activeChatMessages={this.state.activeChatMessages} activeChat={this.state.activeChat} />
@@ -194,7 +194,7 @@ class UserPage extends React.Component {
             }
           </Grid.Column>
 
-          <Grid.Column width={8} textAlign={"left"} style={{color:"#33475b"}}>
+          <Grid.Column width={9} textAlign={"left"} style={{color:"#33475b"}}>
             <div className="activeChatComponent">
               <ActiveChatContainer user={this.props.user} user={this.props.user} chat={this.state.activeChat} messages={this.state.activeChatMessages}  handleNewMessageSubmit={this.handleNewMessageSubmit} renderNewChatForm={this.renderNewChatForm} updateChat={this.updateActiveChat} handleCloseChat={this.handleCloseChat}/>
             </div>

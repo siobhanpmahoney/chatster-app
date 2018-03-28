@@ -9,9 +9,9 @@ import { List, Menu, Image } from 'semantic-ui-react'
 
     style = () => {
       if (this.props.chat.id == this.props.activeChat.id) {
-        return {fontSize:"0.9em", color:'#7590AC', float:"left", width:"100%", display:"inlineBlock", background:"linear-gradient(to bottom right, #b3e7ed66, #85C8C5)"}
+        return {fontSize:"0.9em", margin:"1em 0", color:'#7590AC', float:"left", width:"100%", display:"inlineBlock", background:"linear-gradient(to bottom right, #b3e7ed66, #85C8C5)"}
       } else {
-        return {color:'#7590AC', fontSize:"0.9em", width:"100%", float:"left", display:"inlineBlock"}
+        return {color:'#7590AC', margin:"0.25em 0",fontSize:"0.9em", width:"100%", float:"left", display:"inlineBlock"}
       }
     }
 

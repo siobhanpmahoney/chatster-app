@@ -12,6 +12,55 @@ class ActiveChat extends React.Component {
     }
   }
 
+  //     START new chat vs. existing chat
+
+  renderChatType = () => {
+    if (this.props.chat === "new") {
+      return this.props.renderNewChatForm()
+    } else {
+      return this.renderExistingChat()
+    }
+  }
+
+  renderExistingChat = () => {
+    return (<div className="activeChatWindowContainer">
+    <div className="topBar">
+      <Sticky>
+        <Button size='tiny' floated="right" onClick={this.closeChat} style={{ color:"white", background:"silver", padding:"0.25em", marginBottom:"0.25em", marginLeft:"0.5em"}}><i class="material-icons">close</i></Button>
+        <Header as='h3' dividing style={{margin: "0.5em", padding:"0.25em", fontFamily:"Avenir", fontWeight:"550", color:"#62B1C1"}}>{this.props.chat.title}</Header>
+      </Sticky>
+    </div>
+    <div>
+      <Comment.Group>
+        <div className="messageHistory" scroll>{this.props.messages.map((m) => {
+            return(<Comment key={m.id} className="messageDisplay" >
+            <Comment.Avatar float attached="right" as='a' src={m.avatar} />
+            <Comment.Content>
+              <Comment.Author as='a' style={{fontFamily:"Avenir", fontWeight:"550"}}>{m.username}</Comment.Author>
+              <Comment.Metadata>{this.formattedDate(m.created_at)}</Comment.Metadata>
+              <Comment.Text style={this.renderChat(m)}>{m.content}</Comment.Text>
+            </Comment.Content>
+          </Comment>)})}
+        </div>
+        <Comment>
+          <Comment.Content>
+            <Form inline reply></Form>
+          </Comment.Content>
+        </Comment>
+      </Comment.Group>
+    </div>
+    <Sticky>
+      <div>
+        <button onClick={this.messageSend} type='submit' style={{padding:"0.25em", marginLeft:"0.2em", color:"#FF5370", fontSize:"0.75em", borderRadius:"8px"}}><i class="material-icons" style={{size:"0.75em"}}>send</i></button>
+        <textarea type='text' placeholder='Type a message!...' value={this.state.messageText} onChange={this.messageDraftListener} style={{fontFamily:"Avenir", width:"90%", margin:"0 0.5em 0.5em 0", minHeight: "75px", flexDirection: 'row', float:"right", padding:"0.25em", borderColor:"#BDBECB", borderRadius:"6px"}} />
+      </div>
+    </Sticky>
+  </div>)
+}
+
+
+  //        Message functions
+
   messageDraftListener = (event) => {
     event.preventDefault()
     let draft = event.target.value
@@ -39,9 +88,7 @@ class ActiveChat extends React.Component {
     this.props.handleCloseChat(this.chat), this.renderNoChats
   }
 
-  renderNewChat = () => {
 
-  }
 
   renderChat = (message) => {
 
@@ -77,75 +124,17 @@ class ActiveChat extends React.Component {
     let dateSaved = new Date(dateSent)
     if (today.toLocaleDateString() == dateSaved.toLocaleDateString()) {
       return `Today at ${dateSaved.toLocaleTimeString()}`
+    } else {
+      return `${dateSaved.toLocaleDateString()} at ${dateSaved.toLocaleTimeString()}`
     }
-  else {
-    return `${dateSaved.toLocaleDateString()} at ${dateSaved.toLocaleTimeString()}`
   }
-}
 
 
 
 render() {
-  let display = null
-  if (this.props.messages.length < 1) {
-    display = <h2 className="nothing-to-display" style={{color:"#FF5370", fontWeight:"575"}}>Get Chatting!</h2>
-  }
-  else {
-    display = (<div className="activeChatWindowContainer">
-    <div className="topBar">
-      <Sticky>
-        <Button size='tiny' floated="right" onClick={this.closeChat} style={{ color:"white", background:"silver", padding:"0.25em", marginBottom:"0.25em", marginLeft:"0.5em"}}><i class="material-icons">close</i></Button>
-
-        <Header as='h3' dividing style={{margin: "0.5em", padding:"0.25em", fontFamily:"Avenir", fontWeight:"550", color:"#62B1C1"}}>
-          {this.props.chat.title}
-        </Header>
-
-
-
-
-      </Sticky>
-    </div>
-    <div>
-      <Comment.Group>
-        <div className="messageHistory" scroll>
-          {this.props.messages.map((m) => {
-            return(<Comment key={m.id} className="messageDisplay" >
-            <Comment.Avatar float attached="right" as='a' src={m.avatar} />
-
-
-            <Comment.Content>
-              <Comment.Author as='a' style={{fontFamily:"Avenir", fontWeight:"550"}}>{m.username}</Comment.Author>
-              <Comment.Metadata>{this.formattedDate(m.created_at)}</Comment.Metadata>
-              <Comment.Text style={this.renderChat(m)}>{m.content}</Comment.Text>
-            </Comment.Content>
-          </Comment>)
-        })}
-      </div>
-      <Comment>
-        <Comment.Content>
-          <Form inline reply>
-          </Form>
-        </Comment.Content>
-      </Comment>
-    </Comment.Group>
-  </div>
-  <Sticky>
-    <div>
-
-      <button onClick={this.messageSend} type='submit' style={{padding:"0.25em", marginLeft:"0.2em", color:"#FF5370", fontSize:"0.75em", borderRadius:"8px"}}><i class="material-icons" style={{size:"0.75em"}}>send</i></button>
-
-      <textarea type='text' placeholder='Type a message!...' value={this.state.messageText} onChange={this.messageDraftListener} style={{fontFamily:"Avenir", width:"90%", margin:"0 0.5em 0.5em 0", minHeight: "75px", flexDirection: 'row', float:"right", padding:"0.25em", borderColor:"#BDBECB", borderRadius:"6px"}} />
-
-    </div>
-  </Sticky>
-
-
-</div>)
-}
-
-return (
+  return (
   <div style={{fontFamily:"Avenir"}}>
-    {display}
+    {this.renderChatType()}
   </div>
 )
 }

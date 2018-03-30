@@ -15,7 +15,7 @@ export function loadCurrentUser(user) {
 }
 
 export function createNewChat(newChat) {
-  
+
   return(dispatch) => {
     fetch('http://localhost:3000/api/v1/chats', {
       method: 'post',
@@ -27,7 +27,7 @@ export function createNewChat(newChat) {
         title: newChat.title,
         user1: newChat.user1,
         user2: newChat.user2,
-        messageContent: newChat.messageContent
+        // messageContent: newChat.messageContent
       })
     })
     .then(response => response.json())

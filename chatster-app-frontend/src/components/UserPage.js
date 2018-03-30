@@ -17,7 +17,7 @@ class UserPage extends React.Component {
     this.state = {
       allUsers: [],
       activeChatMessages: [],
-      activeChat: [],
+      activeChat: "",
       newChat: {}
     }
   }
@@ -25,10 +25,10 @@ class UserPage extends React.Component {
   componentDidMount() {
     let allChats = this.props.chats
     this.setState({
-      displayedChats: allChats
+      displayedChats: allChats,
+      activeChat: "new"
     })
   }
-
 
   renderNewChatForm = () => {
     return <div className="newChatForm">
@@ -67,13 +67,19 @@ class UserPage extends React.Component {
     })
   }
 
-  sendNewChat = (event) => {
-    event.preventDefault()
-    let nc = this.state.newChat
-    this.props.createNewChat(nc), this.locateAndRenderNewChat
-    let allChats = this.props.chats
 
-  }
+///     NEED TO SEPAEATE CREATE NEW AND SEND NEW
+
+  // sendNewChat = (event) => {
+  //   event.preventDefault()
+  //   let nc = this.state.newChat
+  //   this.props.createNewChat(nc), this.locateAndRenderNewChat
+  //   let allChats = this.props.chats
+  //
+  // }
+
+
+  //
 
   locateAndRenderNewChat = (event) => {
     event.preventDefault()
@@ -87,8 +93,13 @@ class UserPage extends React.Component {
   //fetching chat archive from backend
 
   updateActiveChat = (selectChat) => {
-    this.fetchActiveChatInfo(selectChat)
-
+    if (selectChat === "new") {
+      this.setState({
+        activeChat: "new"
+      })
+    } else {
+      this.fetchActiveChatInfo(selectChat)
+    }
   }
 
 

@@ -8,13 +8,13 @@ class Api::V1::ChatsController < ApplicationController
 
   def create
     puts "in create"
-    
+
     chat = Chat.create(title: params[:title])
     user1 = User.find(params[:user1])
     user2 = User.find(params[:user2])
     chat.users << user1
     chat.users << user2
-    message = Message.create(content: params[:messageContent], chat_id: chat.id, user_id: user1.id)
+    # message = Message.create(content: params[:messageContent], chat_id: chat.id, user_id: user1.id)
     render json: chat
   end
 

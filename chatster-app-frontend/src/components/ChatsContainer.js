@@ -109,8 +109,8 @@ class ChatsContainer extends React.Component {
             as='h3'
             dividing
             style={{margin: "0.5em", padding:"0.25em", fontFamily:"Avenir", fontWeight:"550", color:"#718CA1", clear:"both"}}
-            icon='conversation'
-            content='Chats' />
+            icon='conversation'>Chats <button onClick={()=>this.props.updateActiveChat("new")}> + </button></Header>
+
 
 
           <Grid>

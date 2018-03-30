@@ -22,6 +22,7 @@ class Friend extends React.Component {
         <Dropdown item text={this.props.friend.username} as="a" src={this.props.friend.avatar} name='friend' style={{fontFamily:"Avenir", fontWeight:"525", color:"#7590AC"}}>
           <Dropdown.Menu>
             {chats.map((chat) => {
+
               return <Dropdown.Item onClick={()=>this.props.updateActiveChat(chat.chat)} data-id={chat.chat.id}>
               {chat.chat.title}
               </Dropdown.Item>

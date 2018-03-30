@@ -9,6 +9,13 @@ import { withRouter } from 'react-router';
 import { Grid, Header } from 'semantic-ui-react'
 
 
+//      Removed message form old newChatForm
+
+// <span><button onClick={this.sendNewChat} style={{padding:"0.25em", marginLeft:"0.2em", color:"blue", fontSize:"0.75em", borderRadius:"8px", display:"inlineBlock"}}><i class="material-icons" style={{size:"0.75em"}}>send</i></button>
+//
+// <textarea type='text' placeholder='Type a message!...' name='messageContent' onChange={this.captureNewChatInfo} style={{width:"90%", minHeight: "80px", padding:"0.25em", borderRadius:"6px", display:"inlineBlock", float:"right"}} /> </span>
+
+
 class UserPage extends React.Component {
 
   constructor(props){
@@ -33,7 +40,7 @@ class UserPage extends React.Component {
   renderNewChatForm = () => {
     return <div className="newChatForm">
       <h3>Start a new chat!</h3>
-      <form>
+      <form onSubmit={this.saveNewChat}>
         <label>Choose a friend!: <select name="user2" onChange={this.captureNewChatInfo}>
           <option value=''>Select...</option>
           {this.props.friends.map((friend => {
@@ -45,9 +52,9 @@ class UserPage extends React.Component {
           <input type='text' name='title' onChange={this.captureNewChatInfo} />
         </label></p>
 
-        <span><button onClick={this.sendNewChat} style={{padding:"0.25em", marginLeft:"0.2em", color:"blue", fontSize:"0.75em", borderRadius:"8px", display:"inlineBlock"}}><i class="material-icons" style={{size:"0.75em"}}>send</i></button>
-
-        <textarea type='text' placeholder='Type a message!...' name='messageContent' onChange={this.captureNewChatInfo} style={{width:"90%", minHeight: "80px", padding:"0.25em", borderRadius:"6px", display:"inlineBlock", float:"right"}} /> </span>
+      <label>
+      <input type="submit" value="Get chatting!" />
+      </label>
 
       </form>
     </div>
@@ -60,15 +67,28 @@ class UserPage extends React.Component {
     let user1 = {user1: this.props.user.id}
     let previousState = this.state.newChat
     let newChatState = Object.assign({}, previousState)
-    newChatState['user1'] = this.props.user.user.id
+    let user1id = this.props.user.user.id.toString()
+    newChatState['user1'] = user1id
     newChatState[name] = value
     this.setState({
       newChat: newChatState
     })
+
   }
 
-
 ///     NEED TO SEPAEATE CREATE NEW AND SEND NEW
+
+// part 1 - save 2 chat
+
+saveNewChat = (event) => {
+  event.preventDefault()
+
+  let nc = this.state.newChat
+  debugger
+  this.props.createNewChat(nc)
+}
+
+//
 
   // sendNewChat = (event) => {
   //   event.preventDefault()
@@ -79,7 +99,6 @@ class UserPage extends React.Component {
   // }
 
 
-  //
 
   locateAndRenderNewChat = (event) => {
     event.preventDefault()
@@ -172,6 +191,7 @@ class UserPage extends React.Component {
 
 
   render() {
+
     return (
       <div>
 

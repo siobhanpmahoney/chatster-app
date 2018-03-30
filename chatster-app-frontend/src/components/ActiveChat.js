@@ -1,4 +1,7 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from '../actions'
 import { Button, Comment, Form, Header, Label, Segment, Sticky, Icon, Feed, Grid, Select, Input } from 'semantic-ui-react'
 
 
@@ -145,4 +148,16 @@ render() {
 
 
 
-  export default ActiveChat
+function mapStateToProps(state, props) {
+  return {
+    user: state.user.user,
+    friends: state.user.friends,
+    chats: state.user.chats,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveChat);

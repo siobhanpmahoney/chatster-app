@@ -16,7 +16,7 @@ const user = (state = {user: null, friends: [], chats: [] }, action) => {
       return state;
 
     case ADD_NEW_CHAT:
-    
+      
       let currentChats = state.chats
       state = Object.assign({},
         state,

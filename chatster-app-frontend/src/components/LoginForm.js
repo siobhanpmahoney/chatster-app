@@ -52,16 +52,48 @@ class LoginForm extends React.Component {
     })
   }
 
+  signUpUser = (event) => {
+  event.preventDefault()
+  fetch("http://localhost:3000/api/v1/signup", {
+    method: 'POST',
+    headers:
+    {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+    },
+    body: JSON.stringify({user: this.state.credentials})
+  })
+    .then(res => res.json())
+    .then(resp => {
+      if (resp.error) {
+        alert(resp.error)
+      } else {
+        window.location = `/`
+        this.props.setLoggedInUser(resp)
+      }
+    })
+    }
+
   render() {
     return (
       <div className="login">
-
+        <h3>Log In</h3>
       <form>
       <input type="text" name="username" onChange={this.formListener} />
       <input type="password" name="password" onChange={this.formListener} />
       <button className="buttons" onClick={this.loginUser}>Login</button>
       </form>
-      </div>
+     
+
+      <h3>New User? Sign Up!</h3>
+<form>
+  <input type="text" name="username" onChange={this.formListener} />
+  <input type="password" name="password" onChange={this.formListener} />
+  <input type="password" name="password_confirmation" onChange={this.formListener} />
+  <button className="buttons" onClick={this.signUpUser} style={{backgroundColor:"#21d8f8", color:"white", padding:"0.5em", fontFamily: "Avenir", borderRadius:"6px", borderStyle:"none"}}>Sign Up</button>
+</form>
+</div>
+
     )
   }
 }

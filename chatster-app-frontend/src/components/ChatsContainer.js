@@ -127,20 +127,20 @@ class ChatsContainer extends React.Component {
             as='h3'
             dividing
             style={{margin: "0.5em", padding:"0.25em", fontFamily:"Avenir", fontWeight:"550", color:"#718CA1", clear:"both"}}
-            icon='conversation'>Chats <button onClick={()=>this.props.updateActiveChat("new")}> + </button></Header>
+            icon='conversation'>Chats <button style={{borderRadius:"6px", color:"#33CBC6", borderColor:"#ebeff3"}} onClick={()=>this.props.updateActiveChat("new")}> + </button></Header>
 
 
 
           <Grid>
 
-          <Menu borderless transparent fluid horizontal align='left' style={{width:"100%", marginLeft:"-1em", color:"#33475b", fontSize:"15px",fontFamily: "Calibri", display:"inline", flexDirection:"row", padding:"0.75em 0", marginBottom:"0.5em", marginTop:"0.25em", clear:"both", justifyContent: "center"}}>
+          <Menu borderless transparent fluid horizontal align='left' style={{width:"100%", marginLeft:"-1em", color:"#33475b", fontSize:"15px",fontFamily: "Calibri", display:"inline", flexDirection:"row", padding:"0.75em 0", marginBottom:"0.5em", marginTop:"0.25em", clear:"both", justifyContent: "center", backgroundColor:"#ecfdfd"}}>
 
             <Menu.Item style={{margin:"0.5em, 0", padding:"0.25em 0 1.5em 0"}}>
             <Dropdown
               button
               className='icon'
               borderless
-
+              placeholder="Sort by.."
               labeled
               align='left'
               icon='sort content ascending'
@@ -150,25 +150,13 @@ class ChatsContainer extends React.Component {
               style={{fontSize:"14px", fontWeight: "380", fontFamily:"Avenir", margin:"0.5em, 0", display:"inline", color:"#62B1C1", backgroundColor:"white", flexDirection:"column", float:"left"}}
 
             />
-            </Menu.Item>
+        </Menu.Item><br />
 
 
-
-            <Menu.Item fluid transparent tiny borderless style={{margin:"0.5em, 0", padding:"1em 0 0.25em 0", fontSize: "0.6em", color:"#62B1C1", fontFamily:"Avenir"}}>
-              <Input icon='search' transparent placeholder='Search Chats...' onChange={this.searchFieldListener} style={{margin:"0.5em, 0", fontFamily:"Avenir",  display:"inline", width:"90%", float:"left",  flexDirection:"row", color:"#62B1C1", fontSize:"50%"}} />
-            </Menu.Item>
-
-
-
-
-
-
-
-
-
-
-
-
+      <form style={{display:"inline", color:"#33CBC6"}}>
+            <label style={{display:"inline", verticalAlign:"text-bottom"}}>
+              <i class="material-icons" style={{display:"inline", verticalAlign:"text-bottom", margin:"0.1em", padding:"0.1em", color:"#33CBC6"}}>search</i>
+          <input type="text" placeholder="Search Chats..." onChange={this.searchFieldListener} style={{borderRadius:"6px", margin:"0.25em", color:"#33CBC6", border:"0.25em", width:"80%", height:"30px", fontFamily:"Avenir", fontSize:"14px"}} /></label></form>
 
 </Menu>
 </Grid>

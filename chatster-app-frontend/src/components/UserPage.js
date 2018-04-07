@@ -30,6 +30,7 @@ class UserPage extends React.Component {
   }
 
   componentDidMount() {
+
     let allChats = this.props.chats
     this.setState({
       displayedChats: allChats,
@@ -84,7 +85,7 @@ saveNewChat = (event) => {
   event.preventDefault()
 
   let nc = this.state.newChat
-  debugger
+
   this.props.createNewChat(nc)
 }
 
@@ -191,7 +192,12 @@ saveNewChat = (event) => {
 
 
   render() {
-
+    if (!this.props) {
+      return<div>loading..</div>
+    }
+    if (this.props.friends == []) {
+      return<div>loading..</div>
+    }
     return (
       <div>
 

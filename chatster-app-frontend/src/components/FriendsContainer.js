@@ -1,6 +1,9 @@
 import React from "react";
 import FriendList from './FriendList';
 import { Button, Menu, Header, Icon } from 'semantic-ui-react'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from '../actions'
 
 
 class FriendsContainer extends React.Component {
@@ -25,4 +28,17 @@ class FriendsContainer extends React.Component {
     )
   }
 }
-export default FriendsContainer
+
+function mapStateToProps(state, props) {
+  return {
+    user: state.user.user,
+    friends: state.user.friends,
+    chats: state.user.chats,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer);

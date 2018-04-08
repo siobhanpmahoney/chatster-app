@@ -29,7 +29,7 @@ class ActiveChat extends React.Component {
     return (<div className="activeChatWindowContainer">
     <div className="topBar">
       <Sticky>
-        <Button size='tiny' floated="right" onClick={this.closeChat} style={{ color:"white", background:"silver", padding:"0.25em", marginBottom:"0.25em", marginLeft:"0.5em"}}><i class="material-icons">close</i></Button>
+        <button onClick={this.closeChat}><i class="material-icons">close</i></button>
         <Header as='h3' dividing style={{margin: "0.5em", padding:"0.25em", fontFamily:"Avenir", fontWeight:"550", color:"#62B1C1"}}>{this.props.chat.title}</Header>
       </Sticky>
     </div>

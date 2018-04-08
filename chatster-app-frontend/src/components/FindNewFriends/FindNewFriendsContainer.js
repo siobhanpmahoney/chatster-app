@@ -32,6 +32,14 @@ class FindNewFriendsContainer extends React.Component {
 
   }
 
+  buttonRender = (user) => {
+    let friendIds = this.props.friends.map((f) => {
+      return f.id
+    })
+    return friendIds.includes(user.id) ? <button className="friendAdded">Added</button>
+  : <button className="addNewFriend" onClick={()=>this.props.addNewFriend(this.props.user.user, user)}>Add Friend</button>
+  }
+
 
   render() {
     console.log(this.state.nonFriendUsers)
@@ -46,7 +54,8 @@ class FindNewFriendsContainer extends React.Component {
 
                 <span className="nonFriendName">
                   {u.username}<br />
-                <button className="addNewFriend" onClick={()=>this.props.addNewFriend(this.props.user.user, u)}>Add Friend</button>
+
+                {this.buttonRender(u)}
                 </span>
               </span>
 

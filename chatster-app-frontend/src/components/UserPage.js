@@ -42,19 +42,19 @@ class UserPage extends React.Component {
     return <div className="newChatForm">
       <h3>Start a new chat!</h3>
       <form onSubmit={this.saveNewChat}>
-        <label>Choose a friend!: <select name="user2" onChange={this.captureNewChatInfo}>
+        <label className="labelChooseFriend">Choose friend: <select name="user2" onChange={this.captureNewChatInfo}>
           <option value=''>Select...</option>
           {this.props.friends.map((friend => {
             return<option value={friend.id}>{friend.username}</option>
           }))}
         </select></label>
 
-        <p><label>Title:
-          <input type='text' name='title' onChange={this.captureNewChatInfo} />
+      <p><label className="labelChooseChatTitle">Title:
+          <span className="newChatTitle"><input type='text' name='title' onChange={this.captureNewChatInfo} style={{  width: "75%"}} /></span>
         </label></p>
 
       <label>
-      <input type="submit" value="Get chatting!" />
+      <input type="submit" value="Get chatting!" className="startNewChat" />
       </label>
 
       </form>

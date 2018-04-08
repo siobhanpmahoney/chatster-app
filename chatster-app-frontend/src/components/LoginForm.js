@@ -77,15 +77,15 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="login">
-        <h3>Log In</h3>
+        <h2 style={{weight:"750", color:"#718ca1", paddingTop:"0.75em"}}>Log In</h2>
       <form>
       <input type="text" name="username" onChange={this.formListener} />
       <input type="password" name="password" onChange={this.formListener} />
       <button className="buttons" onClick={this.loginUser}>Login</button>
       </form>
-     
 
-      <h3>New User? Sign Up!</h3>
+
+      <h2 style={{weight:"750", color:"#718ca1", paddingTop:"0.75em"}}>New User? Sign Up!</h2>
 <form>
   <input type="text" name="username" onChange={this.formListener} />
   <input type="password" name="password" onChange={this.formListener} />

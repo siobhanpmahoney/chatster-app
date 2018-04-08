@@ -133,7 +133,7 @@ class ChatsContainer extends React.Component {
 
           <Grid>
 
-          <Menu borderless transparent fluid horizontal align='left' style={{width:"100%", marginLeft:"-1em", color:"#33475b", fontSize:"15px",fontFamily: "Calibri", display:"inline", flexDirection:"row", padding:"0.75em 0", marginBottom:"0.5em", marginTop:"0.25em", clear:"both", justifyContent: "center", backgroundColor:"#ecfdfd"}}>
+          <div style={{width:"100%", marginLeft:"-1em", color:"#33475b", fontSize:"15px",fontFamily: "Calibri", display:"inline", flexDirection:"row", padding:"0.75em 0", marginBottom:"0.5em", marginTop:"0.25em", clear:"both", justifyContent: "center", borderLeft:"none", borderRight:"none", background:"linear-gradient( #EBEFF3, #E8EEF4)"}}>
 
             <Menu.Item style={{margin:"0.5em, 0", padding:"0.25em 0 1.5em 0"}}>
             <Dropdown
@@ -158,7 +158,7 @@ class ChatsContainer extends React.Component {
               <i class="material-icons" style={{display:"inline", verticalAlign:"text-bottom", margin:"0.1em", padding:"0.1em", color:"#33CBC6"}}>search</i>
           <input type="text" placeholder="Search Chats..." onChange={this.searchFieldListener} style={{borderRadius:"6px", margin:"0.25em", color:"#33CBC6", border:"0.25em", width:"80%", height:"30px", fontFamily:"Avenir", fontSize:"14px"}} /></label></form>
 
-</Menu>
+</div>
 </Grid>
 
 

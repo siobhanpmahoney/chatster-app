@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as Actions from '../actions'
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import { Label } from 'semantic-ui-react'
+import { Label, Icon } from 'semantic-ui-react'
 
 
 const link = {
@@ -43,9 +43,10 @@ class NavBar extends React.Component {
               </Label></NavLink>
 
             <NavLink to="/find-new-friends" exact style={link} activeStyle={{ color:"white", textDecoration:"none"}}>
-                <Label as='a' image style={{background:"#FCFDFD"}}>
-                  <img src= {this.props.user.user.avatar} style={{fontSize:"14px", padding:"0.1em"}}/>
-                  <span style={{fontSize:"14px", fontFamily:"Avenir", color:"#FF5370", background:"#FCFDFD"}}>Find New Friends!</span>
+                <Label as='a' style={{background:"#FCFDFD"}}>
+                   <Icon name='users' style={{fontSize:"14px", padding:"0.1em", color: "#33CBC6"}}/>
+
+                  <span style={{fontSize:"14px", fontFamily:"Avenir", color:"#718ca1", background:"#FCFDFD"}}>Find New Friends</span>
 
                 </Label></NavLink>
 

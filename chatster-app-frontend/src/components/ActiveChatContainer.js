@@ -18,7 +18,7 @@ class ActiveChatContainer extends React.Component {
   render() {
 
           return (
-            <div>
+            <div className="activeChatContainer">
               <ActionCable channel={{channel: 'FeedChannel'}} onReceived={ () => {
                 this.props.updateChat(this.props.chat)
                 }

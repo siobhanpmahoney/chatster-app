@@ -119,3 +119,59 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Avenir"
 }
+
+.nonFriendHeader {
+  margin: 0.5em;
+  padding: 0.5em;
+  weight: 650;
+}
+
+.nonFriendList {
+  align: left;
+}
+
+div.nonFriend {
+  padding: 1em;
+  margin: 1em;
+  width: 250px;
+  float: left;
+  background-color: white;
+  border-radius: 4px;
+  text-align: left;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25), 0 4px 4px rgba(0,0,0,0.22);
+}
+
+img.nonFriend {
+  margin: 0.25em 1.25em 0.25em 0.25em;
+  width:45px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+span.nonFriend {
+  display: inline;
+  vertical-align: top;
+  font-color: #33475b;
+}
+
+span.nonFriendName {
+
+  display: inline-block;
+}
+
+.nonFriendContainer, .nonFriendHeader, .nonFriendList {
+  background-color: linear-gradient(-225deg, #EBEFF3, #E8EEF4);
+}
+
+button.addNewFriend {
+  margin: 0.5em 0.5em 0.5em 0;
+  padding: 0.5em;
+  font-size: 13px;
+  font-weight: 550;
+  background: linear-gradient( #b3e7ed91, #b3e7ed66);
+  color: #33CBC6;
+  font-family: "Avenir";
+  border-radius: 6px;
+  border-style: none;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25), 0 3px 3px rgba(0,0,0,0.2);
+}

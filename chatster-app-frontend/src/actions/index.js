@@ -1,5 +1,7 @@
 export const CURRENT_USER = 'CURRENT_USER'
 export const ADD_NEW_CHAT = 'ADD_NEW_CHAT'
+export const ADD_NEW_FRIEND = 'ADD_NEW_FRIEND'
+
 
 export function loadCurrentUser(user) {
   return (dispatch) => {
@@ -14,10 +16,30 @@ export function loadCurrentUser(user) {
   }
 }
 
-export function createNewChat(newChat) {
-
+export function addNewFriend(currentUser, friend) {
   return(dispatch) => {
-    
+    fetch('http://localhost:3000/api/v1/friendships', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accepts': 'application/json'
+      },
+      body: JSON.stringify({
+        current_user_id: currentUser.id,
+        friend_id: friend.id
+      })
+    })
+    .then(response => response.json())
+    .then(json => dispatch({
+      type: ADD_NEW_FRIEND,
+      friends: json.friends,
+      new_friend: friend
+    }))
+  }
+}
+
+export function createNewChat(newChat) {
+  return(dispatch) => {
     fetch('http://localhost:3000/api/v1/chats', {
       method: 'post',
       headers: {

@@ -190,7 +190,6 @@ saveNewChat = (event) => {
   }
 
 
-
   render() {
     if (!this.props) {
       return<div>loading..</div>

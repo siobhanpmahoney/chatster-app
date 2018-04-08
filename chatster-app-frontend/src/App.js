@@ -11,6 +11,7 @@ import UserPage from './components/UserPage'
 import LoginForm from './components/LoginForm'
 import Logout from './components/Logout'
 import NavBar from './components/NavBar'
+import FindNewFriendsContainer from './components/FindNewFriends/FindNewFriendsContainer'
 
 
 class App extends Component {
@@ -122,6 +123,8 @@ class App extends Component {
           <Route exact path="/logout" render={() => <Logout /> } />
 
           <Route exact path="/" render={() => <UserPage user={this.props.user} friends={this.props.friends} chats={this.props.chats} addResponseToState={this.addResponseToState} /> } />
+
+        <Route exact path="/find-new-friends" render={() => <FindNewFriendsContainer /> } />
         </div>
       </Router>
     );

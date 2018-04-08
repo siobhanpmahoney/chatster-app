@@ -7,7 +7,9 @@ import { Sidebar, Segment, Button, Menu, Icon, Accordian } from 'semantic-ui-rea
 
 const FriendList = (props) => {
   console.log(props.chats)
-
+  if (!props.friends || props.friends == []) {
+    return <div>loading..</div>
+  }
   return(
     <div className="friendList" style={{fontFamily:"Avenir"}}>
 

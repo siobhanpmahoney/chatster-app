@@ -42,6 +42,13 @@ class NavBar extends React.Component {
 
               </Label></NavLink>
 
+            <NavLink to="/find-new-friends" exact style={link} activeStyle={{ color:"white", textDecoration:"none"}}>
+                <Label as='a' image style={{background:"#FCFDFD"}}>
+                  <img src= {this.props.user.user.avatar} style={{fontSize:"14px", padding:"0.1em"}}/>
+                  <span style={{fontSize:"14px", fontFamily:"Avenir", color:"#FF5370", background:"#FCFDFD"}}>Find New Friends!</span>
+
+                </Label></NavLink>
+
               <NavLink onClick={this.props.logOutUser} to="/logout" exact style={link} activeStyle={{color:"white", textDecoration:"none"}}> Log Out </NavLink>
             </span>
           </span>

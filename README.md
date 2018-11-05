@@ -1,3 +1,5 @@
+## *Note*: This project has been deployed [here](https://chatster-app.herokuapp.com/login), and the [frontend](https://github.com/siobhanpmahoney/heroku-chatster-frontend) and [backend](https://github.com/siobhanpmahoney/heroku-chatster-api) code for the deployed version has been split into the linked repos.
+
 # Chatster.
 
 Desktop chat application featuring real-time message delivery and search and filtering tools that optimize accessibility to chats, message history, and friends.
